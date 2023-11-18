@@ -1,0 +1,136 @@
+Que 1: Name any five plots that we can plot using the Seaborn library. Also, state the uses of each plot.
+ans:
+Seaborn is a powerful data visualization library in Python that is based on Matplotlib.
+ It provides a high-level interface for creating informative and attractive statistical graphics.
+ Here are five plots that can be created using Seaborn along with their common uses:
+1. Histograms:
+   - Use: Display the distribution of a single numerical variable.
+   - Seaborn Function: seaborn.histplot()
+   - Example: Visualize the distribution of ages in a dataset.
+2. Scatter Plots:
+   - Use: Show the relationship between two numerical variables.
+   - Seaborn Function: seaborn.scatterplot()
+   - Example: Explore the correlation between the hours studied and exam scores.
+3. Box Plots:
+   - Use: Display the distribution and summary statistics of a numerical variable across different categories.
+   - Seaborn Function:seaborn.boxplot()
+   - Example: Compare the distribution of salaries in different departments.
+4. Heatmaps:
+   - Use: Visualize the correlation between variables in a dataset.
+   - Seaborn Function:seaborn.heatmap()
+   - Example: Explore the correlation matrix of features in a machine learning dataset.
+5. Pair Plots:
+   - Use: Display pairwise relationships in a dataset, including scatter plots and histograms.
+   - Seaborn Function: seaborn.pairplot()
+   - Example: Visualize relationships between multiple variables at once.
+Que 2: Load the "fmri" dataset using the load_dataset function of seaborn. Plot a line plot using x =
+"timepoint" and y = "signal" for different events and regions.
+ans:
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the "fmri" dataset
+fmri_data = sns.load_dataset("fmri")
+
+# Create a line plot using Seaborn
+sns.lineplot(x="timepoint", y="signal", hue="event", style="region", data=fmri_data)
+
+# Add title and labels
+plt.title("Line Plot of Signal over Time for Different Events and Regions")
+plt.xlabel("Timepoint")
+plt.ylabel("Signal")
+
+# Show the plot
+plt.show()
+
+Que 3: Load the "titanic" dataset using the load_dataset function of seaborn. Plot two box plots using x =
+'pclass', y = 'age' and y = 'fare'.
+
+Ans:
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the "titanic" dataset
+titanic_data = sns.load_dataset("titanic")
+
+# Create two box plots using Seaborn
+plt.figure(figsize=(12, 6))  # Set the figure size for better visualization
+
+# Box plot for 'age'
+plt.subplot(1, 2, 1)
+sns.boxplot(x='pclass', y='age', data=titanic_data)
+plt.title('Box Plot of Age by Passenger Class')
+
+# Box plot for 'fare'
+plt.subplot(1, 2, 2)
+sns.boxplot(x='pclass', y='fare', data=titanic_data)
+plt.title('Box Plot of Fare by Passenger Class')
+
+# Show the plots
+plt.show()
+
+
+Que 4: Use the "diamonds" dataset from seaborn to plot a histogram for the 'price' column. Use the hue
+parameter for the 'cut' column of the diamonds dataset.
+
+ans:
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the "diamonds" dataset
+diamonds_data = sns.load_dataset("diamonds")
+
+# Plot a histogram with hue for 'cut' column
+plt.figure(figsize=(10, 6))  # Set the figure size for better visualization
+sns.histplot(data=diamonds_data, x='price', hue='cut', bins=30, kde=True)
+
+# Add title and labels
+plt.title('Histogram of Diamond Prices by Cut')
+plt.xlabel('Price')
+plt.ylabel('Frequency')
+
+# Show the plot
+plt.show()
+
+Que 5: Use the "iris" dataset from seaborn to plot a pair plot. Use the hue parameter for the "species" column
+of the iris dataset.
+ans:
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the "iris" dataset
+iris_data = sns.load_dataset("iris")
+
+# Create a pair plot with hue for 'species' column
+sns.pairplot(iris_data, hue='species', height=2.5)
+
+# Add title
+plt.suptitle('Pair Plot of Iris Dataset by Species', y=1.02)
+
+# Show the plot
+plt.show()
+
+Que 6: Use the "flights" dataset from seaborn to plot a heatmap.
+ans:
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the "flights" dataset
+flights_data = sns.load_dataset("flights")
+
+# Pivot the data to create a matrix for the heatmap
+flights_pivot = flights_data.pivot_table(index='month', columns='year', values='passengers')
+
+# Create a heatmap
+plt.figure(figsize=(10, 7))
+sns.heatmap(flights_pivot, cmap='YlGnBu', annot=True, fmt='d', linewidths=.5)
+
+# Add title
+plt.title('Heatmap of Flight Passengers by Month and Year')
+
+# Show the plot
+plt.show()
+
+
