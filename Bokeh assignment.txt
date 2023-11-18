@@ -1,0 +1,231 @@
+Q1. How can you create a Bokeh plot using Python code?
+ans:
+Bokeh is a Python interactive visualization library that targets modern web browsers for presentation. 
+It provides elegant, concise construction of versatile graphics, and it's particularly well-suited for creating interactive plots.
+ To create a basic Bokeh plot using Python code, you need to follow these steps:
+1. Install Bokeh:
+   Make sure you have Bokeh installed. You can install it using pip:
+ 
+   pip install bokeh
+  
+2. Import Necessary Modules:
+   Import the necessary modules from the Bokeh library.
+   from bokeh.plotting import figure, show
+3. Create Data:
+   Create the data you want to visualize. For example:
+   x = [1, 2, 3, 4, 5]
+   y = [6, 7, 2, 4, 8]
+4. Create a Figure:
+   Create a Bokeh figure to hold your plot.
+   p = figure(title='My Bokeh Plot', x_axis_label='X-axis', y_axis_label='Y-axis')
+5. Add Glyphs:
+   Add glyphs (shapes or markers) to your figure to represent the data.
+   p.circle(x, y, size=10, color='navy', alpha=0.5
+6. Show the Plot:
+   Finally, use the `show()` function to display the plot in your web browser.
+   show(p)
+Putting it all together:
+from bokeh.plotting import figure, show
+# Create data
+x = [1, 2, 3, 4, 5]
+y = [6, 7, 2, 4, 8]
+# Create a figure
+p = figure(title='My Bokeh Plot', x_axis_label='X-axis', y_axis_label='Y-axis')
+# Add glyphs
+p.circle(x, y, size=10, color='navy', alpha=0.5)
+# Show the plot
+show(p)
+
+Q2. What are glyphs in Bokeh, and how can you add them to a Bokeh plot? Explain with an example.
+ans:
+from bokeh.plotting import figure, show
+from bokeh.models import ColumnDataSource
+
+# Create data
+x = [1, 2, 3, 4, 5]
+y = [6, 7, 2, 4, 8]
+
+# Create a ColumnDataSource
+source = ColumnDataSource(data=dict(x=x, y=y))
+
+# Create a figure
+p = figure(title='Glyphs Example', x_axis_label='X-axis', y_axis_label='Y-axis')
+
+# Add circle glyphs
+p.circle(x='x', y='y', size=10, color='navy', alpha=0.5, source=source)
+
+# Add square glyphs
+p.square(x='x', y='y', size=10, color='red', alpha=0.5, source=source)
+
+# Show the plot
+show(p)
+
+
+Q3. How can you customize the appearance of a Bokeh plot, including the axes, title, and legend?
+ans:
+from bokeh.plotting import figure, show
+from bokeh.models import Legend
+
+# Create data
+x = [1, 2, 3, 4, 5]
+y1 = [6, 7, 2, 4, 8]
+y2 = [8, 4, 2, 7, 6]
+
+# Create a figure
+p = figure(title='Customized Bokeh Plot', x_axis_label='X-axis', y_axis_label='Y-axis', width=600, height=400)
+
+# Add line glyphs with legend labels
+line1 = p.line(x, y1, line_width=2, color='blue', legend_label='Line 1')
+line2 = p.line(x, y2, line_width=2, color='red', legend_label='Line 2')
+
+# Customize axes
+p.xaxis.axis_label_text_font_style = 'italic'
+p.yaxis.axis_label_text_font_style = 'italic'
+
+# Customize title
+p.title.text_color = 'green'
+p.title.text_font_size = '20pt'
+p.title.align = 'center'
+
+# Add a legend
+legend = Legend(items=[('Line 1', [line1]), ('Line 2', [line2])], location='top_left')
+p.add_layout(legend)
+
+# Show the plot
+show(p)
+
+Q4. What is a Bokeh server, and how can you use it to create interactive plots that can be updated in
+real time?
+ans:
+Installation:
+Make sure you have Bokeh installed, including the Bokeh Server component:
+pip install bokeh
+
+Creating a Bokeh Application:
+Create a Python script that defines a Bokeh application. This script should include a function, typically named modify_doc, that takes a Bokeh document (doc) as an argument and modifies it to create the desired interactive plot.
+# myapp.py
+from bokeh.models import ColumnDataSource
+from bokeh.plotting import figure
+from bokeh.server.server import Server
+from bokeh.application import Application
+from bokeh.application.handlers.function import FunctionHandler
+
+def modify_doc(doc):
+    # Your Bokeh plot creation and modifications here
+    source = ColumnDataSource(data=dict(x=[0], y=[0]))
+    plot = figure()
+    plot.circle(x='x', y='y', source=source)
+
+    doc.add_root(plot)
+
+# Create the Bokeh application
+app = Application(FunctionHandler(modify_doc))
+Running the Bokeh Server:
+Use the Bokeh Server command to run the Bokeh application script:
+bokeh serve --show myapp.py
+
+
+Q5. How can you embed a Bokeh plot into a web page or dashboard using Flask or Django?
+ans:
+Embedding a Bokeh plot into a web page or dashboard using Flask or Django involves creating a Bokeh application, 
+serving it with the Bokeh Server, and then embedding the Bokeh plot in a web page using the `autoload_server` function provided by Bokeh. Below are examples for both Flask and Django.
+### Flask Example:
+1. Install Flask and Bokeh:
+   pip install flask bokeh
+2. Create a Bokeh Application:
+   Create a Bokeh application script (`myapp.py`) as discussed in the previous response.
+3. Create a Flask Application:
+   # app.py
+
+   from flask import Flask, render_template
+   from bokeh.embed import autoload_server
+   from bokeh.server.server import Server
+
+   app = Flask(__name__)
+
+   @app.route('/')
+   def index():
+       script = autoload_server(model=None, app_path="/myapp", url="http://localhost:5006")
+       return render_template("index.html", script=script)
+
+   if __name__ == '__main__':
+       app.run(port=8080, debug=True)
+
+   Note: Make sure to replace `"http://localhost:5006"` with the correct Bokeh Server URL.
+4. Create a Template (`templates/index.html`):
+   ```html
+   <!-- templates/index.html -->
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Flask Bokeh Embedding</title>
+   </head>
+   <body>
+       <h1>Bokeh Plot Embedded with Flask</h1>
+       {{ script | safe }}
+   </body>
+   </html>
+5. Run the Flask Application:
+   python app.py
+   Visit `http://localhost:8080` in your web browser to see the embedded Bokeh plot.
+
+### Django Example:
+
+1. Install Django and Bokeh:
+   
+   pip install django bokeh
+
+2. Create a Django Project and App:
+   django-admin startproject myproject
+   cd myproject
+   python manage.py startapp myapp
+3. Create a Bokeh Application:
+   Create a Bokeh application script (`myapp.py`) as discussed in the previous response.
+4. Update `myapp/views.py` in Django App:
+   # myapp/views.py
+   from django.shortcuts import render
+   from bokeh.embed import autoload_server
+
+   def index(request):
+       script = autoload_server(model=None, app_path="/myapp", url="http://localhost:5006")
+       return render(request, "index.html", {"script": script})
+5. Update `myproject/settings.py`:
+   Add your Django app to `INSTALLED_APPS`.
+
+6. **Create a Template (`myapp/templates/index.html`):**
+   ```html
+   <!-- myapp/templates/index.html -->
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Django Bokeh Embedding</title>
+   </head>
+   <body>
+       <h1>Bokeh Plot Embedded with Django</h1>
+       {{ script | safe }}
+   </body>
+   </html>
+7. Update `myapp/urls.py`:
+
+   # myapp/urls.py
+
+   from django.urls import path
+   from .views import index
+
+   urlpatterns = [
+       path('', index, name='index'),
+   ]
+
+8. Run the Django Development Server:
+   python manage.py runserver
+   Visit `http://localhost:8000` in your web browser to see the embedded Bokeh plot.
+
+
