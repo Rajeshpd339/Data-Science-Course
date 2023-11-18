@@ -1,0 +1,173 @@
+Q1. List any five functions of the pandas library with execution.
+ans:
+ five functions from the Pandas library 
+1. read_csv()` - Reading Data from CSV:
+   - Purpose: To read data from a CSV file into a Pandas DataFrame.
+   - Example:
+     import pandas as pd
+     # Read data from CSV file into a DataFrame
+     df = pd.read_csv('data.csv')
+2. head() - Displaying the Top Rows:
+   - Purpose: To display the first few rows of a DataFrame for a quick overview.
+   - Example:
+     # Display the first 5 rows of the DataFrame
+     print(df.head())
+3. info()` - Providing DataFrame Information:
+   - Purpose: To get a concise summary of the DataFrame, including data types and missing values.
+   - Example:
+     # Display information about the DataFrame
+     df.info()
+4. describe()` - Descriptive Statistics:
+   - Purpose: To generate descriptive statistics of the DataFrame, including measures like mean, min, max, etc.
+   - Example:
+     # Display summary statistics of the DataFrame
+     print(df.describe())
+5. groupby()` - Grouping and Aggregating Data:
+   - Purpose: To group data in the DataFrame based on specified criteria and perform aggregate functions.
+   - Example:
+     # Group by 'Category' and calculate the mean of 'Value' for each group
+     grouped_data = df.groupby('Category')['Value'].mean()
+Q2. Given a Pandas DataFrame df with columns 'A', 'B', and 'C', write a Python function to re-index the
+DataFrame with a new index that starts from 1 and increments by 2 for each row.
+ans:
+import pandas as pd
+
+def reindex_dataframe(df):
+    # Create a new index starting from 1 and incrementing by 2
+    new_index = range(1, 2 * len(df) + 1, 2)
+
+    # Assign the new index to the DataFrame
+    df_reindexed = df.set_index(pd.Index(new_index))
+
+    return df_reindexed
+
+# Example usage:
+# Assuming df is your original DataFrame with columns 'A', 'B', and 'C'
+# df_reindexed = reindex_dataframe(df)
+
+Q3. You have a Pandas DataFrame df with a column named 'Values'. Write a Python function that
+iterates over the DataFrame and calculates the sum of the first three values in the 'Values' column. The
+function should print the sum to the console.
+For example, if the 'Values' column of df contains the values [10, 20, 30, 40, 50], your function should
+calculate and print the sum of the first three values, which is 60.
+
+Ans:
+import pandas as pd
+
+def calculate_sum_of_first_three(df):
+    # Ensure that 'Values' column exists in the DataFrame
+    if 'Values' not in df.columns:
+        print("Error: 'Values' column not found in the DataFrame.")
+        return
+
+    # Calculate the sum of the first three values in the 'Values' column
+    values_sum = df['Values'].head(3).sum()
+
+    # Print the result to the console
+    print("Sum of the first three values:", values_sum)
+
+# Example usage:
+# Assuming df is your original DataFrame with a column 'Values'
+# df = pd.DataFrame({'Values': [10, 20, 30, 40, 50]})
+# calculate_sum_of_first_three(df)
+
+Q4. Given a Pandas DataFrame df with a column 'Text', write a Python function to create a new column
+'Word_Count' that contains the number of words in each row of the 'Text' column.
+
+Answer:
+import pandas as pd
+
+def add_word_count_column(df):
+    # Ensure that 'Text' column exists in the DataFrame
+    if 'Text' not in df.columns:
+        print("Error: 'Text' column not found in the DataFrame.")
+        return
+
+    # Calculate word count for each row in the 'Text' column
+    df['Word_Count'] = df['Text'].apply(lambda x: len(str(x).split()))
+
+# Example usage:
+# Assuming df is your original DataFrame with a column 'Text'
+# df = pd.DataFrame({'Text': ['This is a sample sentence.', 'Another example.', 'SingleWord']})
+# add_word_count_column(df)
+# print(df)
+
+Q5. How are DataFrame.size() and DataFrame.shape() different?
+ans:
+import pandas as pd
+
+df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
+shape = df.shape
+print(shape)  # Output: (3, 2)
+
+
+Q6. Which function of pandas do we use to read an excel file?
+ans:
+import pandas as pd
+
+# Reading an Excel file into a DataFrame
+df = pd.read_excel('example.xlsx')
+
+# Displaying the DataFrame
+print(df)
+
+Q7. You have a Pandas DataFrame df that contains a column named 'Email' that contains email
+addresses in the format 'username@domain.com'. Write a Python function that creates a new column
+'Username' in df that contains only the username part of each email address.
+The username is the part of the email address that appears before the '@' symbol. For example, if the
+email address is 'john.doe@example.com', the 'Username' column should contain 'john.doe'. Your
+function should extract the username from each email address and store it in the new 'Username'
+column.
+ans:
+import pandas as pd
+
+def extract_username(df):
+    # Ensure that 'Email' column exists in the DataFrame
+    if 'Email' not in df.columns:
+        print("Error: 'Email' column not found in the DataFrame.")
+        return
+
+    # Extract the username from the 'Email' column and create a new 'Username' column
+    df['Username'] = df['Email'].str.split('@').str[0]
+
+# Example usage:
+# Assuming df is your original DataFrame with a column 'Email'
+# df = pd.DataFrame({'Email': ['john.doe@example.com', 'jane.smith@example.com']})
+# extract_username(df)
+# print(df)
+
+
+Q8. You have a Pandas DataFrame df with columns 'A', 'B', and 'C'. Write a Python function that selects
+all rows where the value in column 'A' is greater than 5 and the value in column 'B' is less than 10. The
+function should return a new DataFrame that contains only the selected rows.
+For example, if df contains the following values:
+A B C
+0 3 5 1
+1 8 2 7
+2 6 9 4
+3 2 3 5
+4 9 1 2
+
+ans:
+import pandas as pd
+
+def select_rows_condition(df):
+    # Ensure that columns 'A' and 'B' exist in the DataFrame
+    if 'A' not in df.columns or 'B' not in df.columns:
+        print("Error: Columns 'A' and 'B' are required in the DataFrame.")
+        return
+
+    # Select rows based on the specified conditions
+    selected_rows = df[(df['A'] > 5) & (df['B'] < 10)]
+
+    return selected_rows
+
+# Example usage:
+# Assuming df is your original DataFrame with columns 'A', 'B', and 'C'
+# df = pd.DataFrame({'A': [3, 8, 6, 2, 9],
+#                    'B': [5, 2, 9, 3, 1],
+#                    'C': [1, 7, 4, 5, 2]})
+# result_df = select_rows_condition(df)
+# print(result_df)
+
+
