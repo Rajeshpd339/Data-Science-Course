@@ -1,0 +1,93 @@
+Q1. Load the "titanic" dataset using the load_dataset function of seaborn. Use Plotly express to plot a
+scatter plot for age and fare columns in the titanic dataset.
+
+Ans:
+import seaborn as sns
+import plotly.express as px
+
+# Load the "titanic" dataset
+titanic_data = sns.load_dataset("titanic")
+
+# Create a scatter plot using Plotly Express
+fig = px.scatter(titanic_data, x='age', y='fare', title='Scatter Plot of Age vs Fare in Titanic Dataset')
+
+# Show the plot
+fig.show()
+
+
+Q2. Using the tips dataset in the Plotly library, plot a box plot using Plotly express.
+
+ans:
+import plotly.express as px
+
+# Load the "tips" dataset from Plotly Express
+tips_data = px.data.tips()
+
+# Create a box plot using Plotly Express
+fig = px.box(tips_data, x='day', y='total_bill', title='Box Plot of Total Bill by Day')
+
+# Show the plot
+fig.show()
+
+
+Q3. Using the tips dataset in the Plotly library, Plot a histogram for x= "sex" and y="total_bill" column in
+the tips dataset. Also, use the "smoker" column with the pattern_shape parameter and the "day"
+column with the color parameter.
+
+ans:
+
+import plotly.express as px
+
+# Load the "tips" dataset from Plotly Express
+tips_data = px.data.tips()
+
+# Create a histogram using Plotly Express
+fig = px.histogram(
+    tips_data,
+    x='sex',
+    y='total_bill',
+    color='day',
+    pattern_shape='smoker',
+    title='Histogram of Total Bill by Sex with Smoker Pattern and Day Color'
+)
+
+# Show the plot
+fig.show()
+
+
+Q4. Using the iris dataset in the Plotly library, Plot a scatter matrix plot, using the "species" column for
+the color parameter.
+Note: Use "sepal_length", "sepal_width", "petal_length", "petal_width" columns only with the
+dimensions parameter.
+
+ans:
+import plotly.express as px
+
+# Load the "iris" dataset from Plotly Express
+iris_data = px.data.iris()
+
+# Create a scatter matrix plot using Plotly Express
+fig = px.scatter_matrix(
+    iris_data,
+    dimensions=["sepal_length", "sepal_width", "petal_length", "petal_width"],
+    color="species",
+    title="Scatter Matrix Plot of Iris Dataset"
+)
+
+# Show the plot
+fig.show()
+
+Q5. What is Distplot? Using Plotly express, plot a distplot.
+ans:
+import plotly.express as px
+import numpy as np
+
+# Generate random data for demonstration
+np.random.seed(42)
+data = np.random.normal(0, 1, 1000)
+
+# Create a Distplot using Plotly Express
+fig = px.histogram(data, nbins=30, title='Distplot of Random Data')
+
+# Show the plot
+fig.show()
