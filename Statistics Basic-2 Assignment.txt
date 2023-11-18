@@ -1,0 +1,77 @@
+Q1. What are the three measures of central tendency?
+ans: The three measures of central tendency are:
+1.Mean
+2.Median
+3.Mode
+Q2. What is the difference between the mean, median, and mode? How are they used to measure the central tendency of a dataset?
+ans:
+Mean: The arithmetic average, calculated by summing all values and dividing by the number of observations. It is sensitive to extreme values.
+Median: The middle value when data is ordered. Less sensitive to extreme values, representing the central value.
+Mode: The most frequently occurring value(s) in a dataset. Indicates the most common values.
+These measures provide different perspectives on the central tendency, with the mean giving equal weight to all values, the median providing the middle value, and the mode highlighting the most common values.
+
+Q3. Measure the three measures of central tendency for the given height data:
+
+178,177,176,177,178.2,178,175,179,180,175,178.9,176.2,177,172.5,178,176.5
+ans:
+Mean: 177.5875
+Median: 177.5
+Mode: No mode in this dataset
+Q4. Find the standard deviation for the given data:
+
+178,177,176,177,178.2,178,175,179,180,175,178.9,176.2,177,172.5,178,176.5
+ans:
+Standard Deviation: 1.5347 (approximately)
+
+Q5. How are measures of dispersion such as range, variance, and standard deviation used to describe the spread of a dataset? Provide an example.
+ans:
+Range: The difference between the maximum and minimum values. Example: If the range of test scores is 40 points, it indicates the spread of scores.
+Variance: The average of the squared differences from the mean. A larger variance implies greater spread. Example: Variability in daily stock returns.
+Standard Deviation: The square root of the variance. Provides a more interpretable measure of spread. Example: The standard deviation of heights in a population indicates how heights deviate from the average.
+
+Q6. What is a Venn diagram?
+Ans:
+A Venn diagram is a visual representation of the relationships between different sets or groups. 
+It consists of overlapping circles or other shapes, each representing a set, and the overlapping areas represent the elements that belong to multiple sets. 
+Venn diagrams are commonly used to illustrate set operations and the relationships between different categories.
+
+Q7. For the two given sets A = (2,3,4,5,6,7) & B = (0,2,6,8,10). Find:
+(i) \(A \cap B\) (Intersection): {2, 6}
+(ii) \(A \cup B\) (Union): {0, 2, 3, 4, 5, 6, 7, 8, 10}
+
+Q8. What do you understand about skewness in data?
+ans:
+Skewness is a measure of the asymmetry or lack of symmetry in a probability distribution. In a dataset, skewness indicates the direction and extent of the skew (departure from horizontal symmetry). If the distribution is:
+- Positively skewed (right-skewed): The tail on the right side is longer or fatter than the left side.
+- Negatively skewed (left-skewed): The tail on the left side is longer or fatter than the right side.
+- Perfectly symmetric: The skewness is zero.
+Q9. If a data is right skewed then what will be the position of median with respect to mean?
+ans:
+In a right-skewed distribution, the mean is typically greater than the median. The skewness pulls the mean in the direction of the longer tail, placing it to the right of the median.
+
+Q10. Explain the difference between covariance and correlation. How are these measures used in statistical analysis?
+ans:
+- Covariance: Measures the degree of joint variability of two random variables. Positive covariance indicates a direct relationship, negative covariance indicates an inverse relationship. However, the scale is not standardized.
+- Correlation: Standardized measure of the strength and direction of the linear relationship between two variables. It ranges from -1 to 1, with 1 indicating a perfect positive linear relationship, -1 indicating a perfect negative linear relationship, and 0 indicating no linear relationship. Correlation is unitless and allows for comparison between different pairs of variables.
+
+Q11. What is the formula for calculating the sample mean? Provide an example calculation for a dataset.
+ans:
+The sample mean (\(\bar{X}\)) is calculated as the sum of all values divided by the number of observations (\(n\)):
+\[ \bar{X} = \frac{\sum_{i=1}^{n} X_i}{n} \]
+Example: For the dataset {5, 8, 10, 12, 15}, the mean is \(\frac{5 + 8 + 10 + 12 + 15}{5} = 10\).
+
+Q12. For a normal distribution data what is the relationship between its measure of central tendency?
+ans:
+For a normal distribution:
+- The mean (\(\mu\)) is equal to the median (\(M\)).
+- The mode (\(Mo\)) is also equal to the mean and median.
+
+Q13. How is covariance different from correlation?
+ans:
+- Covariance: Measures the direction and strength of the linear relationship between two variables. However, it is not standardized and depends on the scales of the variables.
+- Correlation: Standardized measure of the strength and direction of the linear relationship. It is dimensionless and ranges from -1 to 1, making it easier to interpret and compare.
+
+Q14. How do outliers affect measures of central tendency and dispersion? Provide an example.
+- Central Tendency: Outliers can heavily influence the mean, pulling it towards the extreme values. The median is less affected by outliers.
+- Dispersion: Outliers can significantly affect measures like range, variance, and standard deviation, making them larger than they would be without outliers.
+Example: In a dataset of incomes where most people earn average salaries, an outlier with an extremely high income can greatly impact the mean income, making it appear higher than it truly is.
