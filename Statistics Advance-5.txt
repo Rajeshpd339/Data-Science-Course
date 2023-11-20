@@ -1,0 +1,225 @@
+Sure, let's go through each question:
+
+### Q1. Calculate the 95% confidence interval for a sample of data with a mean of 50 and a standard deviation of 5 using Python. Interpret the results.
+
+```python
+import scipy.stats as stats
+
+# Given data
+sample_mean = 50
+std_dev = 5
+sample_size =  # specify the sample size
+
+# Confidence Interval calculation
+confidence_interval = stats.norm.interval(0.95, loc=sample_mean, scale=std_dev / (sample_size ** 0.5))
+
+print(f'95% Confidence Interval: {confidence_interval}')
+```
+
+**Interpretation:**
+We are 95% confident that the true population mean falls within the calculated confidence interval.
+
+### Q2. Conduct a chi-square goodness of fit test to determine if the distribution of colors of M&Ms in a bag matches the expected distribution of 20% blue, 20% orange, 20% green, 10% yellow, 10% red, and 20% brown. Use Python to perform the test with a significance level of 0.05.
+
+```python
+import scipy.stats as stats
+
+# Given observed and expected frequencies
+observed_frequencies =  # specify observed frequencies
+expected_frequencies = [0.2, 0.2, 0.2, 0.1, 0.1, 0.2]  # specify expected frequencies
+
+# Chi-square goodness of fit test
+chi2_stat, p_value = stats.chisquare(observed_frequencies, f_exp=expected_frequencies)
+
+# Compare p-value with significance level
+if p_value < 0.05:
+    print("Reject the null hypothesis. The distribution of colors does not match the expected distribution.")
+else:
+    print("Fail to reject the null hypothesis. The distribution of colors matches the expected distribution.")
+```
+
+### Q3. Use Python to calculate the chi-square statistic and p-value for a contingency table with the following data:
+
+```python
+import scipy.stats as stats
+
+# Given data in a contingency table
+observed_data = [[20, 15],  # specify the observed frequencies
+                 [10, 25]]
+
+# Chi-square test for independence
+chi2_stat, p_value, _, _ = stats.chi2_contingency(observed_data)
+
+print(f'Chi-square Statistic: {chi2_stat}')
+print(f'P-value: {p_value}')
+```
+
+**Interpretation:**
+The chi-square test suggests that there is a significant association between the variables.
+
+### Q4. A study of the prevalence of smoking in a population of 500 individuals found that 60 individuals smoked. Use Python to calculate the 95% confidence interval for the true proportion of individuals in the population who smoke.
+
+```python
+import statsmodels.api as sm
+
+# Given data
+sample_size_smoking = 500
+smokers = 60
+
+# Confidence Interval calculation
+confidence_interval_smoking = sm.stats.proportion_confint(smokers, sample_size_smoking, alpha=0.05, method='normal')
+
+print(f'95% Confidence Interval: {confidence_interval_smoking}')
+```
+
+**Interpretation:**
+We are 95% confident that the true proportion of smokers in the population falls within the calculated confidence interval.
+
+### Q5. Calculate the 90% confidence interval for a sample of data with a mean of 75 and a standard deviation of 12 using Python. Interpret the results.
+
+```python
+# Given data
+sample_mean_q5 = 75
+std_dev_q5 = 12
+sample_size_q5 =  # specify the sample size
+
+# Confidence Interval calculation
+confidence_interval_q5 = stats.norm.interval(0.90, loc=sample_mean_q5, scale=std_dev_q5 / (sample_size_q5 ** 0.5))
+
+print(f'90% Confidence Interval: {confidence_interval_q5}')
+```
+
+**Interpretation:**
+We are 90% confident that the true population mean falls within the calculated confidence interval.
+
+### Q6. Use Python to plot the chi-square distribution with 10 degrees of freedom. Label the axes and shade the area corresponding to a chi-square statistic of 15.
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Degrees of freedom
+df = 10
+
+# Chi-square distribution
+x = np.linspace(0, 30, 1000)
+y = stats.chi2.pdf(x, df)
+
+# Plotting the chi-square distribution
+plt.plot(x, y, label=f'Chi-square Distribution (df={df})')
+plt.xlabel('Chi-square Statistic')
+plt.ylabel('Probability Density Function')
+plt.title('Chi-square Distribution')
+
+# Shade the area corresponding to a chi-square statistic of 15
+x_fill = np.linspace(15, 30, 1000)
+y_fill = stats.chi2.pdf(x_fill, df)
+plt.fill_between(x_fill, y_fill, color='orange', alpha=0.5, label='Area for Chi-square Statistic = 15')
+
+# Add legend
+plt.legend()
+
+# Show the plot
+plt.show()
+```
+
+### Q7. A random sample of 1000 people was asked if they preferred Coke or Pepsi. Of the sample, 520 preferred Coke. Calculate a 99% confidence interval for the true proportion of people in the population who prefer Coke.
+
+```python
+# Given
+
+ data
+sample_size_coke = 1000
+coke_preference = 520
+
+# Confidence Interval calculation
+confidence_interval_coke = sm.stats.proportion_confint(coke_preference, sample_size_coke, alpha=0.01, method='normal')
+
+print(f'99% Confidence Interval: {confidence_interval_coke}')
+```
+
+**Interpretation:**
+We are 99% confident that the true proportion of people in the population who prefer Coke falls within the calculated confidence interval.
+
+### Q8. A researcher hypothesizes that a coin is biased towards tails. They flip the coin 100 times and observe 45 tails. Conduct a chi-square goodness of fit test to determine if the observed frequencies match the expected frequencies of a fair coin. Use a significance level of 0.05.
+
+```python
+# Given data
+observed_tails = 45
+expected_tails = 50  # for a fair coin, expected tails would be 50 in 100 flips
+
+# Chi-square goodness of fit test
+chi2_stat_tails, p_value_tails = stats.chisquare(observed_tails, f_exp=expected_tails)
+
+# Compare p-value with significance level
+if p_value_tails < 0.05:
+    print("Reject the null hypothesis. The coin is biased towards tails.")
+else:
+    print("Fail to reject the null hypothesis. There is no evidence that the coin is biased towards tails.")
+```
+
+### Q9. A study was conducted to determine if there is an association between smoking status (smoker or non-smoker) and lung cancer diagnosis (yes or no). The results are shown in the contingency table below. Conduct a chi-square test for independence to determine if there is a significant association between smoking status and lung cancer diagnosis. Use a significance level of 0.05.
+
+```python
+# Given data in a contingency table
+observed_data_lung_cancer = [[20, 15],  # specify the observed frequencies
+                              [10, 25]]
+
+# Chi-square test for independence
+chi2_stat_lung_cancer, p_value_lung_cancer, _, _ = stats.chi2_contingency(observed_data_lung_cancer)
+
+# Compare p-value with significance level
+if p_value_lung_cancer < 0.05:
+    print("Reject the null hypothesis. There is a significant association between smoking status and lung cancer diagnosis.")
+else:
+    print("Fail to reject the null hypothesis. There is no significant association between smoking status and lung cancer diagnosis.")
+```
+
+### Q10. A study was conducted to determine if the proportion of people who prefer milk chocolate, dark chocolate, or white chocolate is different in the U.S. versus the U.K. A random sample of 500 people from the U.S. and a random sample of 500 people from the U.K. were surveyed. The results are shown in the contingency table below. Conduct a chi-square test for independence to determine if there is a significant association between chocolate preference and country of origin.
+
+```python
+# Given data in a contingency table
+observed_data_chocolate = [[120, 180, 200],  # U.S. preferences (Milk, Dark, White)
+                            [80, 120, 300]]   # U.K. preferences (Milk, Dark, White)
+
+# Chi-square test for independence
+chi2_stat_chocolate, p_value_chocolate, _, _ = stats.chi2_contingency(observed_data_chocolate)
+
+# Significance level
+alpha_chocolate = 0.01
+
+# Compare p-value with significance level
+if p_value_chocolate < alpha_chocolate:
+    print("Reject the null hypothesis. There is a significant association between chocolate preference and country of origin.")
+else:
+    print("Fail to reject the null hypothesis. There is no significant association between chocolate preference and country of origin.")
+```
+
+**Interpretation:**
+The chi-square test suggests that there is a significant association between chocolate preference and country of origin.
+
+### Q11. A random sample of 30 people was selected from a population with an unknown mean and standard deviation. The sample mean was found to be 72, and the sample standard deviation was found to be 10. Conduct a hypothesis test to determine if the population mean is significantly different from 70. Use a significance level of 0.05.
+
+```python
+# Given data
+sample_mean_11 = 72
+sample_std_dev_11 = 10
+sample_size_11 = 30
+population_mean_11 = 70
+
+# Degrees of freedom for a t-test
+df_11 = sample_size_11 - 1
+
+# T-test
+t_stat_11, p_value_11 = stats.ttest_1samp([sample_mean_11]*sample_size_11, population_mean_11)
+
+# Significance level
+alpha_11 = 0.05
+
+# Compare p-value with significance level
+if p_value_11 < alpha_11:
+    print("Reject the null hypothesis. The population mean is significantly different from 70.")
+else:
+    print("Fail to reject the null hypothesis. There is no significant difference in the population mean from 70.")
+```
+
