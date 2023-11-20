@@ -1,0 +1,306 @@
+Q1: What is Estimation Statistics? Explain point estimate and interval estimate.
+Estimation Statistics: Estimation involves using sample data to make inferences about population parameters. It provides a range of plausible values for an unknown parameter.
+
+Point Estimate: A single value that is used to estimate the population parameter. Example: The sample mean (
+�
+ˉ
+X
+ˉ
+ ) is a point estimate for the population mean (
+�
+μ).
+
+Interval Estimate: A range of values used to estimate the population parameter. It includes both a point estimate and a margin of error. Example: A confidence interval for the population mean.
+
+Q2: Write a Python function to estimate the population mean using a sample mean and standard deviation.
+python
+Copy code
+import math
+
+def estimate_population_mean(sample_mean, sample_std_dev, sample_size, confidence_level=0.95):
+    # Calculate margin of error using the t-distribution
+    margin_of_error = stats.t.ppf((1 + confidence_level) / 2, df=sample_size - 1) * (sample_std_dev / math.sqrt(sample_size))
+
+    # Calculate confidence interval
+    lower_bound = sample_mean - margin_of_error
+    upper_bound = sample_mean + margin_of_error
+
+    return lower_bound, upper_bound
+
+# Example usage
+sample_mean = 50
+sample_std_dev = 10
+sample_size = 30
+confidence_level = 0.95
+result = estimate_population_mean(sample_mean, sample_std_dev, sample_size, confidence_level)
+print(f'Estimated population mean: {result}')
+Q3: What is Hypothesis testing? Why is it used? State the importance of Hypothesis testing.
+Hypothesis Testing: A statistical method used to make inferences about population parameters based on a sample of data. It involves formulating null and alternative hypotheses, collecting and analyzing data, and drawing conclusions about the population.
+
+Importance of Hypothesis Testing:
+
+Decision Making: Helps in making decisions and drawing conclusions about population parameters.
+Scientific Research: Essential in scientific research to validate or reject hypotheses.
+Quality Control: Used in quality control to ensure product specifications are met.
+Q4: Create a hypothesis that states whether the average weight of male college students is greater than the average weight of female college students.
+Hypothesis:
+
+Null Hypothesis (
+�
+0
+H 
+0
+​
+ ): The average weight of male college students is equal to or less than the average weight of female college students (
+�
+male
+≤
+�
+female
+μ 
+male
+​
+ ≤μ 
+female
+​
+ ).
+Alternative Hypothesis (
+�
+1
+H 
+1
+​
+ ): The average weight of male college students is greater than the average weight of female college students (
+�
+male
+>
+�
+female
+μ 
+male
+​
+ >μ 
+female
+​
+ ).
+Q5: Write a Python script to conduct a hypothesis test on the difference between two population means, given a sample from each population.
+python
+Copy code
+import scipy.stats as stats
+
+def two_sample_t_test(sample1, sample2):
+    _, p_value = stats.ttest_ind(sample1, sample2)
+    return p_value
+
+# Example usage
+sample_male = [70, 72, 75, 68, 71]
+sample_female = [65, 68, 72, 66, 69]
+
+p_value = two_sample_t_test(sample_male, sample_female)
+print(f'P-value: {p_value}')
+Q6: What is a null and alternative hypothesis? Give some examples.
+Null Hypothesis (�\0H 0): A statement that there is no significant difference, effect, or relationship. Example: The mean weight of a drug-treated group is equal to the mean weight of a control group.
+
+Alternative Hypothesis (�1H 1
+​
+  or ��H a): A statement that contradicts the null hypothesis, suggesting a significant difference, effect, or relationship. Example: The mean weight of a drug-treated group is different from the mean weight of a control group.
+
+Q7: Write down the steps involved in hypothesis testing.
+Formulate Hypotheses:
+
+Null Hypothesis (�0H 0): Assumes no effect or no difference.
+Alternative Hypothesis (�1H 1): Assumes an effect or difference.
+Collect Data:
+
+Collect relevant data through experiments or observations.
+Choose Significance Level (�α):
+Decide the level of significance (e.g., 0.05), which determines the probability of rejecting the null hypothesis when it is true.
+Conduct Test:
+
+Use an appropriate statistical test to analyze the data.
+Draw Conclusion:
+
+Based on the test results, either reject or fail to reject the null hypothesis.
+Q8: Define p-value and explain its significance in hypothesis testing.
+P-value: The probability of observing a test statistic as extreme as, or more extreme than, the one observed, assuming the null hypothesis is true.
+
+Significance in Hypothesis Testing:
+
+A small p-value (
+<
+�
+<α) suggests evidence against the null hypothesis.
+A large p-value (
+>
+�
+>α) suggests insufficient evidence to reject the null hypothesis.
+Commonly used significance levels are 0.05 or 0.01.
+Q9: Generate a Student's t-distribution plot using Python's matplotlib library, with the degrees of freedom parameter set to 10.
+python
+Copy code
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
+
+# Generate t-distribution plot
+degrees_of_freedom = 10
+x = np.linspace(-4, 4, 1000)
+y = stats.t.pdf(x, df=degrees_of_freedom)
+
+plt.plot(x, y, label=f't-Distribution (df={degrees_of_freedom})')
+plt.title("Student's t-Distribution")
+plt.xlabel('x')
+plt.ylabel('Probability Density')
+plt.legend()
+plt.show()
+Q10: Write a Python program to calculate the two-sample t-test for independent samples, given two random samples of equal size and a null hypothesis that the population means are equal.
+python
+Copy code
+import scipy.stats as stats
+
+def two_sample_t_test(sample1, sample2):
+    _, p_value = stats.ttest_ind(sample1, sample2)
+    return p_value
+
+# Example usage
+sample1 = [23, 25, 22, 20, 27]
+sample2 = [18, 21, 24, 19, 23]
+
+p_value = two_sample_t_test(sample1, sample2)
+print(f'P-value: {p_value}')
+
+
+### Q11: What is Student’s t distribution? When to use the t-Distribution.
+
+**Student’s t Distribution:**
+- A probability distribution used in statistical inference.
+- Similar to the normal distribution but wider and shaped like a bell curve.
+- Dependent on degrees of freedom (sample size - 1).
+
+**When to Use the t-Distribution:**
+- Small sample sizes (<30) when population standard deviation is unknown.
+- Used in hypothesis testing and confidence intervals for means.
+
+### Q12: What is t-statistic? State the formula for t-statistic.
+
+**t-Statistic:** A measure used in hypothesis testing when the population standard deviation is unknown.
+
+**Formula:**
+\[ t = \frac{{\bar{X} - \mu}}{{s / \sqrt{n}}} \]
+
+Where:
+- \(\bar{X}\) is the sample mean.
+- \(\mu\) is the population mean.
+- \(s\) is the sample standard deviation.
+- \(n\) is the sample size.
+
+### Q13. A coffee shop owner wants to estimate the average daily revenue for their shop. They take a random sample of 50 days and find the sample mean revenue to be $500 with a standard deviation of $50. Estimate the population mean revenue with a 95% confidence interval.
+
+```python
+import scipy.stats as stats
+import math
+
+# Given data
+sample_mean = 500
+sample_std_dev = 50
+sample_size = 50
+confidence_level = 0.95
+
+# Calculate margin of error using the t-distribution
+margin_of_error = stats.t.ppf((1 + confidence_level) / 2, df=sample_size - 1) * (sample_std_dev / math.sqrt(sample_size))
+
+# Calculate confidence interval
+lower_bound = sample_mean - margin_of_error
+upper_bound = sample_mean + margin_of_error
+
+print(f'95% Confidence Interval: (${lower_bound:.2f}, ${upper_bound:.2f})')
+```
+
+### Q14. A researcher hypothesizes that a new drug will decrease blood pressure by 10 mmHg. They conduct a clinical trial with 100 patients and find that the sample mean decrease in blood pressure is 8 mmHg with a standard deviation of 3 mmHg. Test the hypothesis with a significance level of 0.05.
+
+```python
+import scipy.stats as stats
+
+# Given data
+sample_mean = 8
+pop_mean_hypothesized = 10
+sample_std_dev = 3
+sample_size = 100
+alpha = 0.05
+
+# Calculate t-statistic
+t_statistic = (sample_mean - pop_mean_hypothesized) / (sample_std_dev / (sample_size**0.5))
+
+# Find critical value for two-tailed test
+critical_value = stats.t.ppf(1 - alpha/2, df=sample_size - 1)
+
+# Compare t-statistic with critical value
+if abs(t_statistic) > critical_value:
+    print("Reject the null hypothesis.")
+else:
+    print("Fail to reject the null hypothesis.")
+```
+
+### Q15. An electronics company produces a certain type of product with a mean weight of 5 pounds and a standard deviation of 0.5 pounds. A random sample of 25 products is taken, and the sample mean weight is found to be 4.8 pounds. Test the hypothesis that the true mean weight of the products is less than 5 pounds with a significance level of 0.01.
+
+```python
+import scipy.stats as stats
+
+# Given data
+sample_mean = 4.8
+pop_mean_hypothesized = 5
+pop_std_dev = 0.5
+sample_size = 25
+alpha = 0.01
+
+# Calculate t-statistic
+t_statistic = (sample_mean - pop_mean_hypothesized) / (pop_std_dev / (sample_size**0.5))
+
+# Find critical value for one-tailed test
+critical_value = stats.t.ppf(alpha, df=sample_size - 1)
+
+# Compare t-statistic with critical value
+if t_statistic < -critical_value:
+    print("Reject the null hypothesis.")
+else:
+    print("Fail to reject the null hypothesis.")
+```
+
+### Q16. Two groups of students are given different study materials to prepare for a test. The first group (\(n_1 = 30\)) has a mean score of 80 with a standard deviation of 10, and the second group (\(n_2 = 40\)) has a mean score of 75 with a standard deviation of 8. Test the hypothesis that the population means for the two groups are equal with a significance level of 0.01.
+
+```python
+import scipy.stats as stats
+
+# Given data
+sample1_mean = 80
+sample1_std_dev = 10
+sample1_size = 30
+
+sample2_mean = 75
+sample2_std_dev = 8
+sample2_size = 40
+
+alpha = 0.01
+
+# Calculate t-statistic for independent samples
+t_statistic = (sample1_mean - sample2_mean) / math.sqrt((sample1_std_dev**2 / sample1_size) + (sample2_std_dev**2 / sample2_size))
+
+# Find critical value for two-tailed test
+critical_value = stats.t.ppf(1 - alpha/2, df=sample1_size + sample2_size - 2)
+
+# Compare t-statistic with critical value
+if abs(t_statistic) > critical_value:
+    print("Reject the null hypothesis.")
+else:
+    print("Fail to reject the null hypothesis.")
+```
+
+### Q17. A marketing company wants to estimate the average number of ads watched by viewers during a TV program. They take a random sample of 50 viewers and find that the sample mean is 4 with a standard deviation of 1.5. Estimate the population mean with a 99% confidence interval.
+
+```python
+import scipy.stats as stats
+import math
+
+# Given data
+
+
