@@ -1,0 +1,81 @@
+Q1. What is the Probability Density Function (PDF)?
+The Probability Density Function (PDF) describes the likelihood of a continuous random variable taking on a specific value. It represents the relative likelihood of different outcomes in a continuous sample space. The probability of the random variable falling within a particular range is given by the area under the curve of the PDF over that range.
+
+Q2. What are the types of Probability Distribution?
+There are several types of probability distributions, and they can be categorized into discrete and continuous distributions. Some common ones include:
+
+Discrete Distributions: Bernoulli, Binomial, Poisson, Geometric.
+Continuous Distributions: Normal (Gaussian), Exponential, Uniform.
+Q3. Write a Python function to calculate the Probability Density Function (PDF) of a normal distribution with given mean and standard deviation at a given point.
+python Copy code
+import math
+
+def normal_pdf(x, mean, std_dev):
+    return (1 / (std_dev * math.sqrt(2 * math.pi))) * math.exp(-0.5 * ((x - mean) / std_dev) ** 2)
+
+# Example usage
+mean = 0
+std_dev = 1
+x_value = 1
+result = normal_pdf(x_value, mean, std_dev)
+print(f'PDF at x={x_value}: {result}')
+Q4. What are the properties of Binomial distribution? Give two examples of events where binomial distribution can be applied.
+Properties of Binomial Distribution:
+
+Fixed number of trials (n).
+Each trial is independent.
+Two possible outcomes (success or failure).
+Probability of success (p) is constant.
+Examples:
+
+Coin Flipping - Success: Heads, Failure: Tails.
+Quality Control - Success: Defective, Failure: Non-defective.
+Q5. Generate a random sample of size 1000 from a binomial distribution with a probability of success 0.4 and plot a histogram of the results using matplotlib.
+python
+Copy code
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate random sample
+sample_size = 1000
+probability_of_success = 0.4
+binomial_sample = np.random.binomial(1, probability_of_success, sample_size)
+
+# Plot histogram
+plt.hist(binomial_sample, bins=[-0.5, 0.5, 1.5], edgecolor='black')
+plt.title('Binomial Distribution - Random Sample')
+plt.xlabel('Outcome')
+plt.ylabel('Frequency')
+plt.show()
+Q6. Write a Python function to calculate the Cumulative Distribution Function (CDF) of a Poisson distribution with a given mean at a given point.
+python
+Copy code
+from scipy.stats import poisson
+
+def poisson_cdf(x, mean):
+    return poisson.cdf(x, mean)
+
+# Example usage
+mean_poisson = 5
+x_value_poisson = 2
+result_poisson = poisson_cdf(x_value_poisson, mean_poisson)
+print(f'CDF at x={x_value_poisson}: {result_poisson}')
+Q7. How is Binomial distribution different from Poisson distribution?
+Binomial distribution is used for discrete random variables with a fixed number of trials and two possible outcomes.
+Poisson distribution is used for discrete random variables representing the number of events occurring in a fixed interval of time or space.
+Q8. Generate a random sample of size 1000 from a Poisson distribution with mean 5 and calculate the sample mean and variance.
+python Copy code
+# Generate random sample
+poisson_sample = np.random.poisson(5, sample_size)
+
+# Calculate sample mean and variance
+sample_mean = np.mean(poisson_sample)
+sample_variance = np.var(poisson_sample)
+
+print(f'Sample Mean: {sample_mean}')
+print(f'Sample Variance: {sample_variance}')
+Q9. How are mean and variance related in Binomial distribution and Poisson distribution?
+For Binomial Distribution: Mean = n * p, Variance = n * p * (1 - p), where n is the number of trials and p is the probability of success.
+For Poisson Distribution: Both the mean and variance are equal to λ (lambda), the average rate of events.
+Q10. In a normal distribution with respect to mean position, where does the least frequent data appear?
+In a normal distribution, the least frequent data appears in the tails, farthest from the mean. The probability density decreases as you move away from the mean in both directions. The most frequent data points are around the mean.
