@@ -1,0 +1,134 @@
+Q1. Write a Python function that takes in two arrays of data and calculates the F-value for a variance ratio test. The function should return the F-value and the corresponding p-value for the test.
+python
+Copy code
+import scipy.stats as stats
+
+def variance_ratio_test(data1, data2):
+    var1 = np.var(data1, ddof=1)
+    var2 = np.var(data2, ddof=1)
+    f_value = var1 / var2 if var1 >= var2 else var2 / var1
+    df1 = len(data1) - 1
+    df2 = len(data2) - 1
+    p_value = 2 * min(stats.f.cdf(f_value, df1, df2), 1 - stats.f.cdf(f_value, df1, df2))
+    return f_value, p_value
+
+# Example usage
+data1 = [25, 30, 28, 35, 32]
+data2 = [20, 22, 18, 25, 24]
+result = variance_ratio_test(data1, data2)
+print(f'F-value: {result[0]}, p-value: {result[1]}')
+Q2. Given a significance level of 0.05 and the degrees of freedom for the numerator and denominator of an F-distribution, write a Python function that returns the critical F-value for a two-tailed test.
+python
+Copy code
+def critical_f_value(alpha, df_num, df_denom):
+    f_critical = stats.f.ppf(1 - alpha / 2, df_num, df_denom)
+    return f_critical
+
+# Example usage
+alpha = 0.05
+df_num = 3
+df_denom = 20
+result = critical_f_value(alpha, df_num, df_denom)
+print(f'Critical F-value: {result}')
+
+Certainly! Let's continue with the solutions for Q3 to Q9.
+
+### Q3: Use Python to calculate the chi-square statistic and p-value for a contingency table with the following data:
+
+```python
+from scipy.stats import chi2_contingency
+
+# Given data
+observed_data = np.array([[25, 15], [30, 20]])
+
+# Perform chi-square test
+chi2_stat, p_value, _, _ = chi2_contingency(observed_data)
+print(f'Chi-square statistic: {chi2_stat}, p-value: {p_value}')
+```
+
+### Q4: A study of the prevalence of smoking in a population of 500 individuals found that 60 individuals smoked. Use Python to calculate the 95% confidence interval for the true proportion of individuals in the population who smoke.
+
+```python
+from statsmodels.stats.proportion import proportion_confint
+
+# Given data
+total_population = 500
+smokers = 60
+
+# Calculate confidence interval
+conf_interval = proportion_confint(smokers, total_population, alpha=0.05)
+print(f'95% Confidence Interval: {conf_interval}')
+```
+
+### Q5: Calculate the 90% confidence interval for a sample of data with a mean of 75 and a standard deviation of 12 using Python. Interpret the results.
+
+```python
+from scipy.stats import norm
+
+# Given data
+sample_mean = 75
+sample_std = 12
+sample_size = 30  # Assuming a sample size of 30 for demonstration
+
+# Calculate confidence interval
+conf_interval = norm.interval(0.90, loc=sample_mean, scale=sample_std / np.sqrt(sample_size))
+print(f'90% Confidence Interval: {conf_interval}')
+```
+
+### Q6: Use Python to plot the chi-square distribution with 10 degrees of freedom. Label the axes and shade the area corresponding to a chi-square statistic of 15.
+
+```python
+import matplotlib.pyplot as plt
+
+# Plot the chi-square distribution
+df = 10
+x = np.linspace(0, 30, 1000)
+y = stats.chi2.pdf(x, df)
+
+plt.plot(x, y, label=f'Chi-square Distribution (df={df})')
+plt.fill_between(x, y, where=(x >= 15), color='red', alpha=0.3, label='Shaded Area (chi2 > 15)')
+plt.xlabel('Chi-square Statistic')
+plt.ylabel('Probability Density')
+plt.legend()
+plt.show()
+```
+
+### Q7: A random sample of 1000 people was asked if they preferred Coke or Pepsi. Of the sample, 520 preferred Coke. Calculate a 99% confidence interval for the true proportion of people in the population who prefer Coke.
+
+```python
+# Given data
+total_responses = 1000
+coke_preferences = 520
+
+# Calculate confidence interval
+conf_interval_coke = proportion_confint(coke_preferences, total_responses, alpha=0.01)
+print(f'99% Confidence Interval for Coke Preference: {conf_interval_coke}')
+```
+
+### Q8: A researcher hypothesizes that a coin is biased towards tails. They flip the coin 100 times and observe 45 tails. Conduct a chi-square goodness of fit test to determine if the observed frequencies match the expected frequencies of a fair coin. Use a significance level of 0.05.
+
+```python
+# Given data
+observed_tails = 45
+expected_tails = 50  # Assuming a fair coin
+
+# Create observed and expected frequencies
+observed_frequencies = [observed_tails, 100 - observed_tails]
+expected_frequencies = [expected_tails, 100 - expected_tails]
+
+# Perform chi-square goodness of fit test
+chi2_stat, p_value = stats.chisquare(f_obs=observed_frequencies, f_exp=expected_frequencies)
+print(f'Chi-square statistic: {chi2_stat}, p-value: {p_value}')
+```
+
+### Q9: A study was conducted to determine if there is an association between smoking status (smoker or non-smoker) and lung cancer diagnosis (yes or no). The results are shown in the contingency table below. Conduct a chi-square test for independence to determine if there is a significant association between smoking status and lung cancer diagnosis.
+
+```python
+# Given data
+observed_data = np.array([[20, 15], [10, 25]])
+
+# Perform chi-square test for independence
+chi2_stat, p_value, _, _ = chi2_contingency(observed_data)
+print(f'Chi-square statistic: {chi2_stat}, p-value: {p_value}')
+```
+
