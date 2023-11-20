@@ -1,0 +1,70 @@
+Q1: Explain the following with an example:
+C) Artificial Intelligence (AI)
+Artificial Intelligence (AI) refers to the development of computer systems that can perform tasks that typically require human intelligence. This includes tasks such as problem-solving, understanding natural language, recognizing patterns, and learning from experience.
+
+Example: An AI-powered virtual assistant, like Siri or Alexa, can understand spoken language, respond to user queries, and adapt its responses based on user interactions.
+
+D) Machine Learning (ML)
+Machine Learning is a subset of AI that focuses on developing algorithms and models that allow computers to learn and make predictions or decisions without being explicitly programmed. It involves the use of data to train models and improve their performance over time.
+
+Example: A machine learning model trained on a dataset of email examples can learn to differentiate between spam and non-spam emails, allowing it to classify new emails without explicit programming.
+
+I) Deep Learning (DL)
+Deep Learning is a specialized form of machine learning that involves neural networks with many layers (deep neural networks). It excels at tasks such as image and speech recognition, natural language processing, and playing strategic games.
+
+Example: Image recognition using a deep learning model that can accurately identify objects in images, such as recognizing cats in photographs.
+
+Q2: What is supervised learning? List some examples of supervised learning.
+Supervised Learning is a type of machine learning where the model is trained on a labeled dataset, meaning that the input data is paired with the corresponding correct output. The goal is for the model to learn the mapping from inputs to outputs.
+
+Examples of Supervised Learning:
+
+Image Classification: Training a model to recognize and classify images into predefined categories (e.g., cat or dog).
+Speech Recognition: Developing a model to transcribe spoken words into written text.
+Email Spam Detection: Creating a model to identify whether an email is spam or not based on historical labeled data.
+Predictive Analytics: Predicting future outcomes, such as predicting housing prices based on features like square footage and location.
+Q3: What is unsupervised learning? List some examples of unsupervised learning.
+Unsupervised Learning is a type of machine learning where the model is not provided with labeled output during training. The system tries to learn the patterns and the structure from the data without explicit guidance.
+
+Examples of Unsupervised Learning:
+
+Clustering: Grouping similar data points together, like clustering customers based on their purchasing behavior.
+Dimensionality Reduction: Reducing the number of features in a dataset while retaining relevant information.
+Association Rule Learning: Discovering interesting relationships between variables in large datasets.
+Anomaly Detection: Identifying abnormal patterns or outliers in data without labeled examples.
+Q4: What is the difference between AI, ML, DL, and DS?
+AI (Artificial Intelligence): The broader concept of creating machines that can perform tasks requiring human intelligence.
+ML (Machine Learning): A subset of AI that involves developing algorithms allowing machines to learn patterns from data.
+DL (Deep Learning): A specialized form of ML that uses deep neural networks to learn intricate patterns, particularly in unstructured data like images and text.
+DS (Data Science): The broader field that encompasses AI, ML, and DL, focusing on extracting insights and knowledge from data.
+Q5: What are the main differences between supervised, unsupervised, and semi-supervised learning?
+Supervised Learning: Requires labeled training data, where the model learns from input-output pairs.
+Unsupervised Learning: Works with unlabeled data, focusing on finding patterns and relationships within the data.
+Semi-Supervised Learning: Utilizes a combination of labeled and unlabeled data for training, allowing the model to learn from both.
+Q6: What is train, test, and validation split? Explain the importance of each term.
+Train Set: The dataset used for training the model.
+Test Set: The dataset used for evaluating the model's performance after training.
+Validation Set: An additional dataset used to fine-tune the model's hyperparameters and avoid overfitting.
+Importance:
+
+Train Set: Teaches the model patterns and relationships.
+Test Set: Assesses the model's generalization to new, unseen data.
+Validation Set: Helps in adjusting the model's parameters to enhance performance.
+Q7: How can unsupervised learning be used in anomaly detection?
+Unsupervised learning is well-suited for anomaly detection by identifying patterns in data and recognizing deviations from those patterns. Anomalies are instances that significantly differ from the norm, making them stand out. Unsupervised learning algorithms, like clustering or density estimation, can detect these deviations without the need for labeled anomaly examples.
+
+Q8: List down some commonly used supervised learning algorithms and unsupervised learning algorithms.
+Supervised Learning Algorithms:
+
+Linear Regression
+Decision Trees
+Random Forest
+Support Vector Machines (SVM)
+Neural Networks
+Unsupervised Learning Algorithms:
+
+K-Means Clustering
+Hierarchical Clustering
+Principal Component Analysis (PCA)
+Gaussian Mixture Models (GMM)
+Association Rule Learning (Apriori)
