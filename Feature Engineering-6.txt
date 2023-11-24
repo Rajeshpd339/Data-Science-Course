@@ -1,0 +1,65 @@
+Q1. Pearson correlation coefficient is a measure of the linear relationship between two variables. Suppose you have collected data on the amount of time students spend studying for an exam and their final exam scores. Calculate the Pearson correlation coefficient between these two variables and interpret the result.
+
+Calculation:
+Let's denote the amount of time spent studying as variable \(X\) and the final exam scores as variable \(Y\). The Pearson correlation coefficient (\(r\)) is calculated as follows:
+
+\[ r = \frac{\sum{(X_i - \bar{X})(Y_i - \bar{Y})}}{\sqrt{\sum{(X_i - \bar{X})^2} \sum{(Y_i - \bar{Y})^2}}} \]
+
+Interpretation:
+- If \(r\) is close to 1, it indicates a strong positive linear relationship (as study time increases, exam scores increase).
+- If \(r\) is close to -1, it indicates a strong negative linear relationship (as study time increases, exam scores decrease).
+- If \(r\) is close to 0, it indicates a weak or no linear relationship.
+
+Q2. Spearman's rank correlation is a measure of the monotonic relationship between two variables. Suppose you have collected data on the amount of sleep individuals get each night and their overall job satisfaction level on a scale of 1 to 10. Calculate the Spearman's rank correlation between these two variables and interpret the result.
+
+Calculation:
+Spearman's rank correlation (\(\rho\)) is calculated by first ranking the data and then calculating the Pearson correlation coefficient on the ranked data.
+
+Interpretation:
+- \(\rho\) close to 1 suggests a strong positive monotonic relationship (as sleep increases, job satisfaction increases).
+- \(\rho\) close to -1 suggests a strong negative monotonic relationship.
+- \(\rho\) close to 0 suggests a weak or no monotonic relationship.
+
+Q3. Suppose you are conducting a study to examine the relationship between the number of hours of exercise per week and body mass index (BMI) in a sample of adults. You collected data on both variables for 50 participants. Calculate the Pearson correlation coefficient and the Spearman's rank correlation between these two variables and compare the results.
+
+Comparison:
+- If the relationship is linear, Pearson correlation is appropriate.
+- If the relationship is monotonic but not necessarily linear, Spearman's rank correlation is appropriate.
+
+Calculate both coefficients and compare their magnitudes.
+
+Q4. A researcher is interested in examining the relationship between the number of hours individuals spend watching television per day and their level of physical activity. The researcher collected data on both variables from a sample of 50 participants. Calculate the Pearson correlation coefficient between these two variables.
+
+Calculation:
+Similar to Q1, calculate the Pearson correlation coefficient (\(r\)) between the number of hours of TV watching and the level of physical activity.
+
+Interpretation:
+- \(r\) close to 1 suggests a positive linear relationship (more TV watching, less physical activity).
+- \(r\) close to -1 suggests a negative linear relationship.
+- \(r\) close to 0 suggests a weak or no linear relationship.
+
+Q5. A survey was conducted to examine the relationship between age and preference for a particular brand of soft drink. The survey results are shown below:
+```
+Age(Years)    Brand
+25            Coke
+42            Pepsi
+37
+19
+31
+28            Mountain Dew
+```
+
+Interpretation:
+This data seems incomplete, as there are missing ages. However, if you calculate a correlation, it would only make sense if you have matching pairs of ages and corresponding soft drink preferences. You might need to clarify or impute missing values before calculating a correlation.
+
+Q6. A company is interested in examining the relationship between the number of sales calls made per day and the number of sales made per week. The company collected data on both variables from a sample of 30 sales representatives. Calculate the Pearson correlation coefficient between these two variables.
+
+Calculation:
+Calculate the Pearson correlation coefficient (\(r\)) between the number of sales calls per day and the number of sales per week.
+
+Interpretation:
+- \(r\) close to 1 suggests a positive linear relationship (more sales calls, more sales per week).
+- \(r\) close to -1 suggests a negative linear relationship.
+- \(r\) close to 0 suggests a weak or no linear relationship.
+
+Remember to interpret the result in the context of the business question or hypothesis.
