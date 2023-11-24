@@ -1,0 +1,139 @@
+Q1. What is the difference between Ordinal Encoding and Label Encoding? Provide an example of when you might choose one over the other.
+Ordinal Encoding:
+Ordinal encoding is used for categorical variables where there is an inherent order or ranking among the categories. The categories are assigned numerical values based on their order.
+Label Encoding:
+Label encoding is a general-purpose technique that assigns unique numerical labels to each category without considering any inherent order.
+
+Example:
+Consider a dataset with a "Size" variable: Small, Medium, Large.
+
+- Ordinal Encoding: Assign values like 1, 2, 3 based on the size order.
+- Label Encoding: Assign arbitrary values like 0, 1, 2 without considering the order.
+
+Choice:
+Choose ordinal encoding when the categorical variable has a clear order or hierarchy, and label encoding when there is no meaningful order among the categories.
+
+### Q2. Explain how Target Guided Ordinal Encoding works and provide an example of when you might use it in a machine learning project.
+
+Target Guided Ordinal Encoding:
+In target-guided ordinal encoding, the labels are assigned based on the mean of the target variable for each category. This can help capture the relationship between the categorical variable and the target variable.
+
+Example:
+Suppose you have a "City" variable and you want to predict whether a person buys a product or not. You can encode "City" based on the mean purchase rate in each city.
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Assuming df is your dataframe with 'City' and 'Purchase' columns
+X_train, X_test, y_train, y_test = train_test_split(df[['City']], df['Purchase'], test_size=0.2, random_state=42)
+
+# Calculate mean purchase rate for each city in the training set
+city_purchase_mean = X_train.groupby('City')['Purchase'].mean().to_dict()
+
+# Map the mean purchase rate to encode 'City'
+X_train['City_encoded'] = X_train['City'].map(city_purchase_mean)
+X_test['City_encoded'] = X_test['City'].map(city_purchase_mean)
+```
+
+Usage:
+Use target-guided ordinal encoding when there is a potential relationship between the categorical variable and the target variable, and you want to capture this relationship in the encoding.
+
+### Q3. Define covariance and explain why it is important in statistical analysis. How is covariance calculated?
+
+Covariance:
+Covariance measures the degree to which two variables change together. It indicates the direction of the linear relationship between variables: positive covariance suggests a positive relationship, while negative covariance suggests a negative relationship.
+
+Importance:
+- Relationship Strength: Covariance helps assess the strength and direction of the relationship between variables.
+- Risk and Portfolio Management: In finance, covariance is used to understand the relationships between different assets.
+- Linear Regression: Covariance is involved in calculating the coefficients of linear regression models.
+
+Calculation:
+\[ \text{cov}(X, Y) = \frac{\sum_{i=1}^{n}(X_i - \bar{X})(Y_i - \bar{Y})}{n-1} \]
+
+where \( \bar{X} \) and \( \bar{Y} \) are the means of variables X and Y, respectively.
+
+### Q4. For a dataset with the following categorical variables: Color (red, green, blue), Size (small, medium, large), and Material (wood, metal, plastic), perform label encoding using Python's scikit-learn library. Show your code and explain the output.
+
+```python
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd
+
+# Sample dataset
+data = {'Color': ['red', 'green', 'blue', 'red', 'green'],
+        'Size': ['small', 'medium', 'large', 'small', 'medium'],
+        'Material': ['wood', 'metal', 'plastic', 'wood', 'metal']}
+
+df = pd.DataFrame(data)
+
+# Label encoding using scikit-learn
+label_encoder = LabelEncoder()
+
+for column in df.columns:
+    df[column + '_encoded'] = label_encoder.fit_transform(df[column])
+
+print(df)
+
+
+Output:
+
+   Color   Size Material  Color_encoded  Size_encoded  Material_encoded
+0    red  small     wood              2             2                 2
+1  green medium    metal              1             1                 1
+2   blue  large  plastic              0             0                 0
+3    red  small     wood              2             2                 2
+4  green medium    metal              1             1                 1
+
+
+Explanation:
+- Each unique category in 'Color,' 'Size,' and 'Material' is assigned a numerical label using label encoding.
+- The new columns ('Color_encoded,' 'Size_encoded,' 'Material_encoded') represent the label-encoded versions of the original categorical columns.
+
+### Q5. Calculate the covariance matrix for the following variables in a dataset: Age, Income, and Education level. Interpret the results.
+
+```python
+import pandas as pd
+
+# Sample dataset
+data = {'Age': [25, 30, 35, 40, 45],
+        'Income': [50000, 60000, 70000, 80000, 90000],
+        'Education_Level': [12, 16, 14, 18, 20]}
+
+df = pd.DataFrame(data)
+
+# Calculate covariance matrix
+cov_matrix = df.cov()
+
+print(cov_matrix)
+```
+Output:
+```
+                    Age       Income  Education_Level
+Age              12.5       25000.0          10.0
+Income       25000.0  125000000.0      62500.0
+Education_Level    10.0      62500.0          10.0
+
+
+Interpretation:
+- The diagonal elements represent the variances of 'Age,' 'Income,' and 'Education_Level,' respectively.
+- The off-diagonal elements represent the covariances between the corresponding pairs of variables.
+
+### Q6. You are working on a machine learning project with a dataset containing several categorical variables, including "Gender" (Male/Female), "Education Level" (High School/Bachelor's/Master's/PhD), and "Employment Status" (Unemployed/Part-Time/Full-Time). Which encoding method would you use for each variable, and why?
+
+- Gender: Use label encoding since there is no inherent order between male and female.
+  ```python
+  # Assuming df is your dataframe
+  df['Gender_encoded'] = LabelEncoder().fit_transform(df['Gender'])
+  ```
+
+- Education Level: Use ordinal encoding since there is an inherent order among education levels.
+  ```python
+  # Assuming df is your dataframe
+  education_order = {'High School': 0, 'Bachelor\'s': 1, 'Master\'s': 2, 'PhD': 3}
+  df['Education_Level_encoded'] = df['Education Level'].map(education_order)
+  ```
+
+- Employment Status: Use nominal encoding since there is no meaningful order among employment statuses.
+  ```python
+  # Assuming df is your dataframe
+  df = pd.get_dummies(df
