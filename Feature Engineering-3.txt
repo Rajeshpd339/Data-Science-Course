@@ -1,0 +1,88 @@
+### Q1. What is Min-Max scaling, and how is it used in data preprocessing? Provide an example to illustrate its application.
+
+*Min-Max Scaling:*
+Min-Max scaling is a data preprocessing technique used to scale numerical features to a specific range, typically [0, 1]. It involves transforming the original values \(X\) using the formula:
+
+\[X_{\text{scaled}} = \frac{X - X_{\text{min}}}{X_{\text{max}} - X_{\text{min}}}\]
+
+where \(X_{\text{min}}\) and \(X_{\text{max}}\) are the minimum and maximum values of the feature, respectively.
+
+*Example:*
+Let's say you have a feature 'age' with values ranging from 20 to 60. Applying Min-Max scaling:
+
+\[X_{\text{scaled}} = \frac{\text{age} - 20}{60 - 20}\]
+
+This scales the 'age' values to the range [0, 1].
+
+### Q2. What is the Unit Vector technique in feature scaling, and how does it differ from Min-Max scaling? Provide an example to illustrate its application.
+
+*Unit Vector Technique:*
+The unit vector technique, also known as normalization, scales features by dividing each data point by its magnitude (L2 norm). The formula for scaling is:
+
+\[X_{\text{scaled}} = \frac{X}{\|X\|}\]
+
+where \(\|X\|\) is the Euclidean norm (magnitude) of the feature vector \(X\).
+
+*Difference from Min-Max Scaling:*
+While Min-Max scaling maps values to a specific range, unit vector scaling normalizes the values in terms of their magnitude, resulting in a vector with unit length.
+
+*Example:*
+If you have a feature vector \([3, 4]\), the unit vector scaling would be:
+
+\[X_{\text{scaled}} = \frac{[3, 4]}{\sqrt{3^2 + 4^2}} = \left[\frac{3}{5}, \frac{4}{5}\right]\]
+
+### Q3. What is PCA (Principal Component Analysis), and how is it used in dimensionality reduction? Provide an example to illustrate its application.
+
+*PCA (Principal Component Analysis):*
+PCA is a dimensionality reduction technique that transforms high-dimensional data into a lower-dimensional space while retaining as much variance as possible. It does so by identifying principal components, which are linear combinations of the original features.
+
+*Example:*
+Consider a dataset with two features, 'height' and 'weight.' PCA can identify principal components, let's say PC1 and PC2, which are linear combinations of 'height' and 'weight.' These principal components capture the maximum variance in the data, allowing for dimensionality reduction.
+
+### Q4. What is the relationship between PCA and Feature Extraction, and how can PCA be used for Feature Extraction? Provide an example to illustrate this concept.
+
+*PCA and Feature Extraction:*
+PCA is a form of feature extraction. It identifies the most informative features (principal components) that capture the variance in the data. These components can be considered as new features that summarize the original data.
+
+*Example:*
+If you have a dataset with features 'A,' 'B,' and 'C,' PCA might identify principal components PC1 and PC2. These principal components are linear combinations of 'A,' 'B,' and 'C.' You can use PC1 and PC2 as the new features, effectively reducing the dimensionality of the dataset.
+
+### Q5. You are working on a project to build a recommendation system for a food delivery service. The dataset contains features such as price, rating, and delivery time. Explain how you would use Min-Max scaling to preprocess the data.
+
+1. *Identify Numeric Features:* Determine which features are numeric, such as 'price,' 'rating,' and 'delivery time.'
+2. *Compute Min and Max:* Calculate the minimum (\(X_{\text{min}}\)) and maximum (\(X_{\text{max}}\)) values for each numeric feature.
+3. *Apply Min-Max Scaling:* For each feature \(X\), apply the Min-Max scaling formula:
+   \[X_{\text{scaled}} = \frac{X - X_{\text{min}}}{X_{\text{max}} - X_{\text{min}}}\]
+4. *Transformed Data:* The transformed data will have the scaled values of 'price,' 'rating,' and 'delivery time' in the range [0, 1], making them comparable.
+
+### Q6. You are working on a project to build a model to predict stock prices. The dataset contains many features, such as company financial data and market trends. Explain how you would use PCA to reduce the dimensionality of the dataset.
+
+1. *Feature Selection:* Identify the features related to company financial data and market trends in the dataset.
+2. *Standardization:* Standardize the features to have zero mean and unit variance to ensure that features with different scales contribute equally.
+3. *Apply PCA:* Use PCA to transform the standardized features into principal components.
+4. *Determine Number of Components:* Analyze the explained variance ratio for each principal component and choose the number of components that capture a sufficient amount of variance.
+5. *Transform Data:* Apply the selected number of principal components to reduce the dimensionality of the dataset.
+
+### Q7. For a dataset containing the following values: [1, 5, 10, 15, 20], perform Min-Max scaling to transform the values to a range of -1 to 1.
+
+\[X_{\text{scaled}} = \frac{X - X_{\text{min}}}{X_{\text{max}} - X_{\text{min}}}\]
+
+\[X_{\text{scaled}} = \frac{X - 1}{20 - 1}\]
+
+\[X_{\text{scaled}} = \frac{X - 1}{19}\]
+
+Applying this formula for each value in the dataset:
+
+- For 1: \(\frac{1 - 1}{19} = 0\)
+- For 5: \(\frac{5 - 1}{19} = \frac{4}{19}\)
+- For 10: \(\frac{10 - 1}{19} = \frac{9}{19}\)
+- For 15: \(\frac{15 - 1}{19} = \frac{14}{19}\)
+- For 20: \(\frac{20 - 1}{19} = \frac{19}{19} = 1\)
+
+So, the Min-Max scaled values are \([0, \frac{4}{19}, \frac{9}{19}, \frac{14}{19}, 1]\) in the range of -1 to 1.
+
+### Q8. For a dataset containing the following features: [height, weight, age, gender, blood pressure], perform Feature Extraction using PCA. How many principal components would you choose to retain, and why?
+
+1. *Standardization:* Standardize the features to have zero mean and unit variance.
+2. *Apply PCA:* Use PCA to transform the standardized features into principal components.
+3. *Analyze Explained Variance:* Examine the explained
