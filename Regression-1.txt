@@ -1,0 +1,58 @@
+Q1. Explain the difference between simple linear regression and multiple linear regression. Provide an example of each.**
+- Simple Linear Regression: It involves predicting a dependent variable (response) based on a single independent variable (feature). The relationship is represented by a straight line. Example: Predicting house prices based on the square footage of the house.
+- Multiple Linear Regression: It involves predicting a dependent variable based on two or more independent variables. The relationship is represented by a hyperplane in a multidimensional space. Example: Predicting a student's exam score based on study hours, attendance, and previous grades.
+
+Q2. Discuss the assumptions of linear regression. How can you check whether these assumptions hold in a given dataset?**
+
+Assumptions:
+1. Linearity: The relationship between variables is linear.
+2. Independence: Residuals (errors) are independent.
+3. Homoscedasticity: Residuals have constant variance.
+4. Normality: Residuals are normally distributed.
+
+To check assumptions, you can use diagnostic plots, such as residuals vs. fitted values, Q-Q plots, and scatterplots. Statistical tests like the Shapiro-Wilk test can assess normality.
+
+Q3. How do you interpret the slope and intercept in a linear regression model? Provide an example using a real-world scenario.**
+
+- Intercept (β₀): It represents the predicted value of the dependent variable when all independent variables are zero.
+- Slope (β₁, β₂, ...): It represents the change in the dependent variable for a one-unit change in the corresponding independent variable.
+
+Example: In a salary prediction model, the intercept might represent the predicted salary when years of experience are zero, and the slope for years of experience would indicate the average increase in salary per additional year of experience.
+
+Q4. Explain the concept of gradient descent. How is it used in machine learning?**
+
+Gradient descent is an optimization algorithm used to minimize the cost function in machine learning models. It iteratively adjusts the model parameters in the direction that reduces the cost. The gradient (partial derivatives) of the cost function indicates the steepest ascent, and moving in the opposite direction decreases the cost. It is widely used in training linear regression, logistic regression, and neural network models.
+
+Q5. Describe the multiple linear regression model. How does it differ from simple linear regression?**
+
+In multiple linear regression, the model predicts a dependent variable based on multiple independent variables. The equation is: 
+\[ Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \ldots + \beta_pX_p + \varepsilon \]
+where \( Y \) is the dependent variable, \( X_1, X_2, \ldots, X_p \) are independent variables, \( \beta_0 \) is the intercept, \( \beta_1, \beta_2, \ldots, \beta_p \) are coefficients, and \( \varepsilon \) is the error term.
+
+It differs from simple linear regression as it involves more than one independent variable.
+
+Q6. Explain the concept of multicollinearity in multiple linear regression. How can you detect and address this issue?**
+
+Multicollinearity occurs when independent variables in a multiple linear regression model are highly correlated, making it challenging to distinguish their individual effects. It can lead to unstable coefficient estimates.
+
+Detection methods include variance inflation factor (VIF) calculations, correlation matrices, and eigenvalue analysis. Addressing methods involve removing highly correlated variables or using dimensionality reduction techniques.
+
+**Q7. Describe the polynomial regression model. How is it different from linear regression?**
+
+Polynomial regression is a type of regression analysis where the relationship between the independent variable and the dependent variable is modeled as an \(n\)-degree polynomial. The equation is:
+\[ Y = \beta_0 + \beta_1X + \beta_2X^2 + \ldots + \beta_nX^n + \varepsilon \]
+
+It differs from linear regression by allowing for nonlinear relationships between variables, capturing more complex patterns in the data.
+
+Q8. What are the advantages and disadvantages of polynomial regression compared to linear regression? In what situations would you prefer to use polynomial regression?**
+
+Advantages:
+- Captures Nonlinearity: Can model complex relationships.
+- Flexibility: Adaptable to various patterns in data.
+Disadvantages:
+- Overfitting: Higher-degree polynomials may fit the training data too closely.
+- Interpretability: Interpretation of coefficients becomes complex with higher degrees.
+
+Use Cases:
+- **Curvilinear Relationships:** When relationships are not linear.
+- **Predictive Accuracy:** If it improves model performance on validation data.
