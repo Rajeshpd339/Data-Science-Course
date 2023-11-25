@@ -1,0 +1,71 @@
+Q1. What is the purpose of grid search cv in machine learning, and how does it work?
+
+- **Purpose:** Grid Search CV is used for hyperparameter tuning. It systematically searches through a predefined set of hyperparameter values to find the combination that produces the best model performance.
+
+- **How it Works:** It creates a grid of all possible hyperparameter combinations, evaluates the model using cross-validation for each combination, and selects the combination with the best performance.
+
+**Q2. Describe the difference between grid search cv and randomize search cv, and when might you choose one over the other?**
+
+- **Difference:**
+  - **Grid Search CV:** Exhaustively searches through a predefined set of hyperparameter values.
+  - **Randomized Search CV:** Randomly samples hyperparameter values from specified distributions.
+
+- **Choice:**
+  - Choose Grid Search CV when the search space is relatively small, and you want to evaluate all possible combinations.
+  - Choose Randomized Search CV when the search space is large, and you want to efficiently explore a diverse set of hyperparameter values.
+
+**Q3. What is data leakage, and why is it a problem in machine learning? Provide an example.**
+
+- **Data Leakage:** Data leakage occurs when information from outside the training dataset is used to create a model, leading to inflated performance metrics that do not generalize to new data.
+
+- **Example:** Including future information (not available at the time of prediction) as a feature in the training data. For instance, using tomorrow's stock price to predict today's market movement.
+
+**Q4. How can you prevent data leakage when building a machine learning model?**
+
+- **Prevention:**
+  - Ensure that features used for training are only derived from information available at the time of prediction.
+  - Be cautious with time-series data to avoid using future information.
+  - Use proper cross-validation techniques to mimic the real-world scenario.
+
+**Q5. What is a confusion matrix, and what does it tell you about the performance of a classification model?**
+
+- **Confusion Matrix:** A table that summarizes the performance of a classification model, showing the counts of true positives, true negatives, false positives, and false negatives.
+
+- **Information:** It provides insights into the model's accuracy, precision, recall, and F1 score.
+
+**Q6. Explain the difference between precision and recall in the context of a confusion matrix.**
+
+- **Precision:** The proportion of predicted positive instances that are actually positive. Precision = TP / (TP + FP).
+
+- **Recall (Sensitivity):** The proportion of actual positive instances that are correctly predicted. Recall = TP / (TP + FN).
+
+**Q7. How can you interpret a confusion matrix to determine which types of errors your model is making?**
+
+- **Interpretation:**
+  - **True Positives (TP):** Instances correctly predicted as positive.
+  - **False Positives (FP):** Instances incorrectly predicted as positive.
+  - **True Negatives (TN):** Instances correctly predicted as negative.
+  - **False Negatives (FN):** Instances incorrectly predicted as negative.
+
+**Q8. What are some common metrics that can be derived from a confusion matrix, and how are they calculated?**
+
+- **Common Metrics:**
+  - **Accuracy:** (TP + TN) / (TP + TN + FP + FN).
+  - **Precision:** TP / (TP + FP).
+  - **Recall (Sensitivity):** TP / (TP + FN).
+  - **F1 Score:** 2 * (Precision * Recall) / (Precision + Recall).
+
+**Q9. What is the relationship between the accuracy of a model and the values in its confusion matrix?**
+
+- **Relationship:** Accuracy is the overall correctness of predictions and is calculated as (TP + TN) / (TP + TN + FP + FN).
+
+- **Note:** Accuracy may not be a reliable metric in imbalanced datasets.
+
+**Q10. How can you use a confusion matrix to identify potential biases or limitations in your machine learning model?**
+
+- **Identifying Bias or Limitations:**
+  - Examine the distribution of predictions across different classes.
+  - Check for disproportionately high false positive or false negative rates in specific classes.
+  - Analyze misclassifications to understand if certain classes are consistently problematic.
+
+- **Note:** A detailed analysis of the confusion matrix can reveal which classes are challenging for the model and where improvements are needed.
