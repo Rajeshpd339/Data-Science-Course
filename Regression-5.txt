@@ -1,0 +1,61 @@
+Q1. What is Elastic Net Regression and how does it differ from other regression techniques?
+- Elastic Net Regression: It is a linear regression technique that combines both L1 (Lasso) and L2 (Ridge) regularization terms in the cost function. It addresses some limitations of Lasso and Ridge regression by providing a balance between them.
+\[ \text{Cost} = \text{OLS Cost} + \lambda_1 \sum_{j=1}^{p} |\beta_j| + \lambda_2 \sum_{j=1}^{p} \beta_j^2 \]
+
+- Differences:
+  - Combination of L1 and L2: Elastic Net includes both L1 and L2 penalty terms, providing a trade-off between sparsity (L1) and shrinkage (L2).
+  - Advantage in Presence of Highly Correlated Features: It is particularly useful when there are groups of highly correlated features.
+
+Q2. How do you choose the optimal values of the regularization parameters for Elastic Net Regression?
+
+- Cross-Validation: The optimal values of \(\lambda_1\) and \(\lambda_2\) are typically chosen through cross-validation. Different combinations of \(\lambda_1\) and \(\lambda_2\) are tested, and the combination that minimizes a chosen performance metric (e.g., mean squared error) on validation sets is selected.
+
+Q3. What are the advantages and disadvantages of Elastic Net Regression?**
+
+- Advantages:
+  - Balance between Lasso and Ridge: It combines the advantages of Lasso (feature selection) and Ridge (handling multicollinearity).
+  - Suitable for Highly Correlated Features: Effective when dealing with highly correlated features.
+
+- Disadvantages:
+  - Complexity: The inclusion of two hyperparameters makes the model more complex to tune.
+  - Computational Overhead: More computationally intensive compared to Lasso or Ridge alone.
+
+Q4. What are some common use cases for Elastic Net Regression?**
+
+- Common Use Cases:
+  - **Highly Correlated Features:** When dealing with datasets containing groups of highly correlated features.
+  - **Feature Selection:** When there is a need for feature selection while considering the effects of multicollinearity.
+
+**Q5. How do you interpret the coefficients in Elastic Net Regression?**
+
+- **Interpretation:** Similar to Ridge and Lasso, the coefficients represent the change in the dependent variable for a one-unit change in the corresponding independent variable, considering the influence of all other variables. Direct interpretation can be challenging due to regularization.
+
+**Q6. How do you handle missing values when using Elastic Net Regression?**
+
+- **Imputation:** Before applying Elastic Net Regression, missing values in the dataset need to be handled. Imputation methods such as mean imputation or more advanced techniques can be used.
+
+**Q7. How do you use Elastic Net Regression for feature selection?**
+
+- **Automatic Feature Selection:** Elastic Net automatically performs feature selection by setting some coefficients to zero. The choice of \(\lambda_1\) and \(\lambda_2\) influences the degree of sparsity.
+
+**Q8. How do you pickle and unpickle a trained Elastic Net Regression model in Python?**
+
+- **Pickle and Unpickle:**
+  ```python
+  import pickle
+
+  # Save model to file
+  with open('elastic_net_model.pkl', 'wb') as file:
+      pickle.dump(elastic_net_model, file)
+
+  # Load model from file
+  with open('elastic_net_model.pkl', 'rb') as file:
+      loaded_model = pickle.load(file)
+  ```
+
+**Q9. What is the purpose of pickling a model in machine learning?**
+
+- **Purpose of Pickling:**
+  - **Serialization:** Pickling is the process of serializing a Python object into a byte stream. This is useful for saving trained machine learning models.
+  - **Storage and Transport:** Pickled models can be stored for later use or transported to other environments.
+  - **Reproducibility:** Enables reproducibility by saving the exact state of a trained model for later analysis or deployment.
