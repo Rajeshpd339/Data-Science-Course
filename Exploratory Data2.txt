@@ -1,0 +1,58 @@
+Q1. Load the flight price dataset and examine its dimensions. How many rows and columns does the dataset have?**
+To find the dimensions of the dataset (number of rows and columns), you can use the following Python code:
+
+import pandas as pd
+# Assuming your dataset is in a CSV file named 'flight_prices.csv'
+flight_data = pd.read_csv('flight_prices.csv')
+# Display the dimensions of the dataset
+print("Number of rows:", flight_data.shape[0])
+print("Number of columns:", flight_data.shape[1])
+```
+
+Q2. What is the distribution of flight prices in the dataset? Create a histogram to visualize the distribution.**
+
+import matplotlib.pyplot as plt
+
+# Create a histogram of flight prices
+plt.hist(flight_data['Price'], bins=30, color='blue', edgecolor='black')
+plt.xlabel('Flight Price')
+plt.ylabel('Frequency')
+plt.title('Distribution of Flight Prices')
+plt.show()
+
+
+Q3. What is the range of prices in the dataset? What is the minimum and maximum price?**
+
+# Display the range of flight prices
+min_price = flight_data['Price'].min()
+max_price = flight_data['Price'].max()
+
+print("Minimum Price:", min_price)
+print("Maximum Price:", max_price)
+
+
+Q4. How does the price of flights vary by airline? Create a boxplot to compare the prices of different airlines.**
+
+import seaborn as sns
+# Create a boxplot to compare flight prices by airline
+plt.figure(figsize=(12, 6))
+sns.boxplot(x='Airline', y='Price', data=flight_data)
+plt.xlabel('Airline')
+plt.ylabel('Flight Price')
+plt.title('Flight Prices by Airline')
+plt.xticks(rotation=45)
+plt.show()
+
+Q5. Are there any outliers in the dataset? Identify any potential outliers using a boxplot and describe how they may impact your analysis.**
+Outliers can be identified using the boxplot created in the previous question. Points outside the whiskers of the boxplot are potential outliers. Outliers may impact your analysis by skewing summary statistics and influencing model predictions. It's important to understand whether these outliers are genuine data points or errors that need to be addressed.
+
+Q6. You are working for a travel agency, and your boss has asked you to analyze the Flight Price dataset to identify the peak travel season. What features would you analyze to identify the peak season, and how would you present your findings to your boss?**
+To identify the peak travel season, you might analyze features like 'Date_of_Journey' to see if there are patterns related to months or specific dates. You could present your findings using line plots or bar plots to visualize the variation in flight prices over time.
+
+**Q7. You are a data analyst for a flight booking website, and you have been asked to analyze the Flight Price dataset to identify any trends in flight prices. What features would you analyze to identify these trends, and what visualizations would you use to present your findings to your team?**
+
+To identify trends in flight prices, you might analyze features like 'Date_of_Journey,' 'Source,' 'Destination,' and 'Airline.' Visualizations such as line plots or heatmaps can be used to show how prices vary over time or across different factors like source, destination, or airline.
+
+**Q8. You are a data scientist working for an airline company, and you have been asked to analyze the Flight Price dataset to identify the factors that affect flight prices. What features would you analyze to identify these factors, and how would you present your findings to the management team?**
+
+To identify factors affecting flight prices, you might analyze features like 'Airline,' 'Source,' 'Destination,' 'Total_Stops,' and 'Duration.' You could use statistical methods or machine learning models to quantify the impact of these factors on prices. Present your findings using visualizations such as bar plots, regression plots, or feature importance plots from machine learning models.
