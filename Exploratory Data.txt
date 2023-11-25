@@ -1,0 +1,23 @@
+Q1. What are the key features of the wine quality data set? Discuss the importance of each feature in predicting the quality of wine.
+
+Typically, a wine quality dataset includes features such as acidity levels, residual sugar, alcohol content, pH, and various chemical properties. Each of these features contributes to the overall taste and quality of the wine. For instance, acidity and pH can influence the perceived freshness, while alcohol content can affect the body and warmth of the wine. Analyzing the importance of each feature involves understanding how they interact to influence the overall quality, helping in building predictive models.
+
+Q2. How did you handle missing data in the wine quality data set during the feature engineering process? Discuss the advantages and disadvantages of different imputation techniques.
+
+Handling missing data can involve techniques like mean imputation, median imputation, or advanced methods like regression imputation or multiple imputation. Each technique has its advantages and disadvantages. For example, mean imputation is simple but sensitive to outliers, while regression imputation is more sophisticated but assumes a linear relationship. The choice depends on the nature of the data and the assumptions you're willing to make.
+
+Q3. What are the key factors that affect students' performance in exams? How would you go about analyzing these factors using statistical techniques?
+
+Factors affecting students' performance can include study time, attendance, socio-economic status, and previous academic performance. Statistical techniques such as regression analysis can help identify which factors have a significant impact on exam scores. Correlation analysis and hypothesis testing can also be used to explore relationships and make statistical inferences.
+
+Q4. Describe the process of feature engineering in the context of the student performance data set. How did you select and transform the variables for your model?
+
+Feature engineering involves selecting relevant features, transforming variables, and creating new features. For student performance, one might create features like a cumulative GPA, attendance rate, or a binary indicator for high or low study time. Transformation may include converting categorical variables to numerical representations or normalizing numerical features.
+
+Q5. Load the wine quality data set and perform exploratory data analysis (EDA) to identify the distribution of each feature. Which feature(s) exhibit non-normality, and what transformations could be applied to these features to improve normality?
+
+In EDA, you would visualize the distribution of each feature. Features like residual sugar or acidity might exhibit non-normality. Transformations like log transformation or Box-Cox transformation can be applied to make these distributions more normal.
+
+Q6. Using the wine quality data set, perform principal component analysis (PCA) to reduce the number of features. What is the minimum number of principal components required to explain 90% of the variance in the data?
+
+PCA helps in dimensionality reduction. After applying PCA, you can examine the cumulative explained variance in the principal components and determine the number of components needed to reach 90%. This analysis provides insight into how much information is retained in a reduced-dimensional space.
