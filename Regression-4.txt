@@ -1,0 +1,39 @@
+**Q1. What is Lasso Regression, and how does it differ from other regression techniques?**
+
+- **Lasso Regression:** It is a regularized linear regression technique that adds a penalty term to the ordinary least squares (OLS) regression cost function. The penalty term is proportional to the absolute values of the coefficients.
+\[ \text{Cost} = \text{OLS Cost} + \lambda \sum_{j=1}^{p} |\beta_j| \]
+
+- **Differences:**
+  - **Feature Selection:** Lasso tends to drive some coefficients exactly to zero, effectively performing feature selection.
+  - **Sparsity:** Lasso induces sparsity in the model by setting some coefficients to zero, unlike Ridge Regression.
+
+**Q2. What is the main advantage of using Lasso Regression in feature selection?**
+
+- **Advantage:** Lasso Regression can automatically perform feature selection by setting some coefficients to zero, effectively excluding less important features from the model.
+
+**Q3. How do you interpret the coefficients of a Lasso Regression model?**
+
+- **Interpretation:** Similar to Ridge Regression, the coefficients represent the change in the dependent variable for a one-unit change in the corresponding independent variable, considering the influence of all other variables. However, due to regularization, direct interpretation can be challenging.
+
+**Q4. What are the tuning parameters that can be adjusted in Lasso Regression, and how do they affect the model's performance?**
+
+- **Tuning Parameter:** The primary tuning parameter in Lasso Regression is \(\lambda\), which controls the strength of the regularization.
+- **Effect on Performance:** As \(\lambda\) increases, the penalty for large coefficients becomes stronger, leading to more coefficients being driven to zero. The choice of \(\lambda\) is crucial and is typically determined through cross-validation.
+
+**Q5. Can Lasso Regression be used for non-linear regression problems? If yes, how?**
+
+- **Yes, to some extent:** While Lasso is primarily designed for linear regression, it can be applied to non-linear problems by transforming the input features into a higher-dimensional space. However, for strictly non-linear problems, other non-linear regression techniques may be more suitable.
+
+**Q6. What is the difference between Ridge Regression and Lasso Regression?**
+
+- **Difference:**
+  - **Penalty Term:** Ridge uses the sum of squared coefficients as the penalty term, while Lasso uses the sum of the absolute values of the coefficients.
+  - **Sparsity:** Ridge tends to shrink coefficients towards zero but rarely exactly to zero, while Lasso can drive some coefficients exactly to zero, leading to sparsity.
+
+**Q7. Can Lasso Regression handle multicollinearity in the input features? If yes, how?**
+
+- **Handling Multicollinearity:** Lasso Regression is effective in handling multicollinearity. It tends to select one variable from a group of highly correlated variables and sets the coefficients of the less important variables to zero.
+
+**Q8. How do you choose the optimal value of the regularization parameter (lambda) in Lasso Regression?**
+
+- **Cross-Validation:** The optimal value of \(\lambda\) is typically chosen through cross-validation. Different values of \(\lambda\) are tested, and the one that minimizes a chosen performance metric (e.g., mean squared error) on validation sets is selected. Cross-validation helps prevent overfitting and ensures better generalization to new data.
