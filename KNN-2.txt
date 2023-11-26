@@ -1,0 +1,25 @@
+Q1. Difference between Euclidean and Manhattan Distance:
+
+Euclidean distance is the straight-line distance between two points, while Manhattan distance is the sum of the absolute differences along each dimension.
+The main difference lies in the path used to connect points. Euclidean is a diagonal distance, and Manhattan is a path along gridlines.
+The choice might affect KNN since Euclidean is more sensitive to large differences in one dimension, while Manhattan might be more robust.
+Q2. Choosing the Optimal k Value:
+
+Optimal k is often determined through techniques like cross-validation.
+Using techniques like grid search or randomized search to evaluate different k values and selecting the one that maximizes performance metrics.
+Q3. Impact of Distance Metric Choice:
+
+The choice of distance metric can significantly impact KNN's performance.
+Euclidean is sensitive to varying scales, while Manhattan is less affected. Use Euclidean when features have similar importance; otherwise, consider Manhattan.
+Q4. Common Hyperparameters and Tuning:
+
+Common hyperparameters include k (number of neighbors), distance metric, and optional weights (uniform or distance-based).
+Grid search or randomized search can be used to tune these hyperparameters for optimal performance.
+Q5. Effect of Training Set Size:
+
+Larger training sets generally provide more information for KNN, but beyond a certain point, the benefits might diminish.
+Techniques like cross-validation can help determine an appropriate size for the training set.
+Q6. Potential Drawbacks and Overcoming Them:
+
+Drawbacks include sensitivity to outliers, computational expense, and the curse of dimensionality.
+Address outliers through preprocessing, optimize computation using efficient algorithms, and address dimensionality issues with techniques like feature selection or dimensionality reduction.
