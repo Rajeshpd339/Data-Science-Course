@@ -1,0 +1,84 @@
+### Q1. Probability of an Employee Being a Smoker Given Health Insurance Usage:
+
+The probability of an employee being a smoker given that they use the health insurance plan can be calculated using Bayes' Theorem:
+
+\[ P(\text{Smoker}|\text{Uses Insurance}) = \frac{P(\text{Uses Insurance}|\text{Smoker}) \cdot P(\text{Smoker})}{P(\text{Uses Insurance})} \]
+
+Given:
+- \( P(\text{Uses Insurance}) = 0.70 \) (probability of using insurance)
+- \( P(\text{Smoker}) = 0.40 \) (probability of being a smoker given insurance usage)
+
+We can calculate the probability.
+
+### Q2. Difference Between Bernoulli Naive Bayes and Multinomial Naive Bayes:
+
+- **Bernoulli Naive Bayes:** Suitable for binary data, where features are binary (presence or absence). It models the presence or absence of features as binary variables.
+
+- **Multinomial Naive Bayes:** Suitable for discrete data, often used in text classification. It deals with counts of occurrences of different categories.
+
+### Q3. Handling Missing Values in Bernoulli Naive Bayes:
+
+In scikit-learn's Bernoulli Naive Bayes implementation, missing values are treated as 0 (absence of a feature). This aligns with the typical usage of Bernoulli Naive Bayes for binary data, where the focus is on the presence or absence of features.
+
+### Q4. Use of Gaussian Naive Bayes for Multi-class Classification:
+
+Yes, Gaussian Naive Bayes can be used for multi-class classification. It assumes that features are normally distributed within each class. It can handle continuous data and is suitable when the features follow a Gaussian distribution.
+
+### Q5. Implementation and Performance Evaluation:
+
+```python
+import pandas as pd
+from sklearn.model_selection import cross_val_score
+from sklearn.naive_bayes import BernoulliNB, MultinomialNB, GaussianNB
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# Load the Spambase dataset
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data"
+data = pd.read_csv(url, header=None)
+
+# Extract features and labels
+X = data.iloc[:, :-1]
+y = data.iloc[:, -1]
+
+# Implement classifiers
+bernoulli_nb = BernoulliNB()
+multinomial_nb = MultinomialNB()
+gaussian_nb = GaussianNB()
+
+# Evaluate performance using 10-fold cross-validation
+def evaluate_classifier(classifier, X, y):
+    accuracy = cross_val_score(classifier, X, y, cv=10, scoring='accuracy')
+    precision = cross_val_score(classifier, X, y, cv=10, scoring='precision')
+    recall = cross_val_score(classifier, X, y, cv=10, scoring='recall')
+    f1 = cross_val_score(classifier, X, y, cv=10, scoring='f1')
+    return accuracy, precision, recall, f1
+
+# Report performance metrics for each classifier
+def report_metrics(classifier, name):
+    accuracy, precision, recall, f1 = evaluate_classifier(classifier, X, y)
+    print(f"Metrics for {name} Naive Bayes:")
+    print(f"  Accuracy: {accuracy.mean():.4f}")
+    print(f"  Precision: {precision.mean():.4f}")
+    print(f"  Recall: {recall.mean():.4f}")
+    print(f"  F1 Score: {f1.mean():.4f}")
+    print()
+
+# Report metrics for each Naive Bayes classifier
+report_metrics(bernoulli_nb, "Bernoulli")
+report_metrics(multinomial_nb, "Multinomial")
+report_metrics(gaussian_nb, "Gaussian")
+```
+
+### Discussion:
+
+- The choice of the best-performing Naive Bayes variant depends on the characteristics of the dataset. For text classification tasks, Multinomial Naive Bayes might perform well, while for binary features, Bernoulli Naive Bayes could be suitable. Gaussian Naive Bayes is effective for continuous features.
+
+- Limitations of Naive Bayes include the assumption of independence between features, which may not hold in real-world scenarios.
+
+### Conclusion:
+
+- The choice of Naive Bayes variant depends on the nature of the data. Each variant has its strengths and weaknesses.
+
+- In this case, the performance of each classifier should be interpreted based on the specific characteristics of the dataset.
+
+- Future work could involve exploring feature engineering techniques or experimenting with other machine learning algorithms to compare performance. Additionally, handling imbalanced classes and understanding the impact of feature independence assumptions could be areas for further investigation.
