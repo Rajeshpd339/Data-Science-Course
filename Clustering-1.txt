@@ -1,0 +1,67 @@
+Q1. Different Types of Clustering Algorithms:
+
+Clustering algorithms can be broadly categorized into several types based on their approach and underlying assumptions:
+
+Hierarchical Clustering:
+
+Divisive: Top-down approach, starts with the whole dataset as one cluster and recursively splits.
+Agglomerative: Bottom-up approach, starts with each data point as a cluster and merges them iteratively.
+Partitioning Methods:
+
+K-Means: Divides data into k clusters based on centroids.
+K-Medoids: Similar to K-Means but uses medoids (actual data points) as cluster centers.
+Density-Based Methods:
+
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise): Identifies clusters based on dense regions in data.
+Model-Based Methods:
+
+Gaussian Mixture Models (GMM): Assumes that data points are generated from a mixture of Gaussian distributions.
+Fuzzy Clustering:
+
+Fuzzy C-Means: Allows data points to belong to multiple clusters with varying degrees of membership.
+Self-Organizing Maps (SOM):
+
+Neural network-based approach that represents data in a lower-dimensional space.
+Each type of clustering algorithm has its strengths, weaknesses, and use cases.
+
+Q2. K-Means Clustering:
+
+K-Means is a partitioning method that separates data into K clusters. The algorithm works as follows:
+
+Initialize K centroids randomly.
+Assign each data point to the nearest centroid, forming clusters.
+Update the centroids by taking the mean of all data points in each cluster.
+Repeat steps 2-3 until convergence.
+Q3. Advantages and Limitations of K-Means:
+
+Advantages:
+
+Simple and easy to implement.
+Scales well to large datasets.
+Efficient for globular-shaped clusters.
+Limitations:
+
+Assumes clusters are spherical and equally sized.
+Sensitive to the initial placement of centroids.
+May converge to local optima.
+Q4. Determining Optimal Number of Clusters in K-Means:
+
+Elbow Method: Plot the sum of squared distances to the centroid for different values of K and choose the "elbow" point where the rate of decrease slows.
+Silhouette Score: Measure of how similar an object is to its own cluster compared to other clusters.
+Gap Statistics: Compare the sum of squared distances of clusters to a random distribution.
+Q5. Applications of K-Means Clustering:
+
+Image segmentation.
+Customer segmentation in marketing.
+Anomaly detection in cybersecurity.
+Document clustering in natural language processing.
+Q6. Interpreting K-Means Output:
+
+Centroids represent cluster centers.
+Each data point is assigned to the cluster with the nearest centroid.
+Analyzing cluster characteristics helps interpret the meaning of each cluster.
+Q7. Challenges in Implementing K-Means:
+
+Sensitivity to initial centroids.
+Difficulty handling clusters of different sizes and densities.
+Requires predefined number of clusters.
