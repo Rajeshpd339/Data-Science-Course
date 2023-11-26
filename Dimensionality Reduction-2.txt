@@ -1,0 +1,27 @@
+Q1. What is a projection and how is it used in PCA?
+
+Projection: In PCA, a projection is the transformation of data onto a lower-dimensional subspace (spanned by the principal components). It involves representing data points in terms of the principal components, reducing the dimensionality while retaining most of the data's variability.
+Q2. How does the optimization problem in PCA work, and what is it trying to achieve?
+
+Optimization Problem: PCA involves finding the eigenvectors (principal components) of the covariance matrix corresponding to the largest eigenvalues. This is formulated as an optimization problem where the goal is to maximize the variance (spread) of the projected data along the principal components.
+Q3. What is the relationship between covariance matrices and PCA?
+
+Relationship: The covariance matrix summarizes the relationships between all pairs of features in the data. In PCA, the covariance matrix is used to find the principal components. The eigenvectors of the covariance matrix represent the directions of maximum variance, and the corresponding eigenvalues indicate the amount of variance along those directions.
+Q4. How does the choice of the number of principal components impact the performance of PCA?
+
+Number of Components: Choosing the number of principal components affects the balance between dimensionality reduction and information retention. Too few components may result in information loss, while too many may include noise. The optimal number is often determined by considering the cumulative explained variance.
+Q5. How can PCA be used in feature selection, and what are the benefits of using it for this purpose?
+
+Feature Selection: PCA identifies the most important features by ranking them based on their contribution to variance. Features corresponding to the top principal components can be selected. Benefits include reduced dimensionality, removal of correlated features, and focusing on the most informative aspects of the data.
+Q6. What are some common applications of PCA in data science and machine learning?
+
+Applications: PCA is used in image compression, facial recognition, data visualization, denoising, and reducing multicollinearity in regression. It's valuable whenever dimensionality reduction is required while preserving essential information.
+Q7. What is the relationship between spread and variance in PCA?
+
+Spread and Variance: In PCA, the spread refers to the variance of data along each principal component. Principal components are chosen to maximize this spread, ensuring that the projected data retains as much variability as possible.
+Q8. How does PCA use the spread and variance of the data to identify principal components?
+
+Identifying Principal Components: PCA identifies principal components by finding the directions in which the data exhibits the maximum variance. The eigenvectors (principal components) of the covariance matrix point in these directions, and their corresponding eigenvalues quantify the amount of variance along each component.
+Q9. How does PCA handle data with high variance in some dimensions but low variance in others?
+
+Handling Variance Differences: PCA is effective in handling data with varying variances. It identifies principal components based on overall variance, ensuring that dimensions with high variance contribute more to the principal components, while dimensions with low variance have less influence. This helps in capturing the dominant patterns in the data.
