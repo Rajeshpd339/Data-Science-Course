@@ -1,0 +1,20 @@
+1. What is meant by time-dependent seasonal components?
+   -Time-dependent seasonal components refer to recurring patterns in a time series data that vary in amplitude and frequency over time. Unlike fixed seasonal patterns, these components change dynamically.*
+
+2. How can time-dependent seasonal components be identified in time series data?
+   - Identification involves visual inspection of plots, decomposition of the time series into trend, seasonality, and residual components, and statistical methods such as Fourier analysis or periodogram analysis.*
+
+3. What are the factors that can influence time-dependent seasonal components?
+   - Factors influencing time-dependent seasonality include external events, economic changes, and societal patterns that affect the regularity of recurring cycles.*
+
+4. How are autoregression models used in time series analysis and forecasting?
+   - Autoregression (AR) models use past values of a time series to predict future values. The model expresses a current value as a linear combination of its past values.*
+
+5. How do you use autoregression models to make predictions for future time points?
+   - To make predictions, an autoregressive model uses coefficients obtained from fitting the model to historical data. These coefficients, along with past observations, are used to predict future values.*
+
+6. What is a moving average (MA) model and how does it differ from other time series models?
+   - A Moving Average (MA) model predicts the present value based on past white noise (random) terms. It differs from autoregressive models in that it considers the influence of past error terms rather than past observations.*
+
+7.What is a mixed ARMA model and how does it differ from an AR or MA model?
+   - *A mixed ARMA model (Autoregressive Moving Average) combines both autoregressive and moving average components. It allows for a more flexible representation of time series data, capturing dependencies in both past observations and past error terms.*
