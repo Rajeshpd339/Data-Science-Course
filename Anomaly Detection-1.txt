@@ -1,0 +1,25 @@
+1. What is anomaly detection and what is its purpose?
+   - Anomaly detection is the identification of rare items, events, or observations that significantly differ from the majority of the data. Its purpose is to uncover unusual patterns or behaviors that may indicate potential issues or interesting occurrences.
+2. What are the key challenges in anomaly detection?
+   - The key challenges include dealing with imbalanced datasets, defining what constitutes an anomaly, adapting to evolving data patterns, and handling various types of anomalies (global, contextual, collective).*
+
+3. How does unsupervised anomaly detection differ from supervised anomaly detection?
+   - Unsupervised anomaly detection operates without labeled data, identifying anomalies based on deviations from the majority. Supervised anomaly detection requires labeled data, training the model on normal and anomalous instances.*
+
+4. What are the main categories of anomaly detection algorithms?
+   - The main categories include statistical methods, machine learning-based methods (e.g., isolation forests, one-class SVM), proximity-based methods (e.g., k-nearest neighbors), and clustering-based methods.*
+
+5. What are the main assumptions made by distance-based anomaly detection methods?
+   - Distance-based anomaly detection methods assume that anomalies are far from normal instances in the feature space. The distance metric is crucial for determining the proximity of data points.*
+
+6. How does the LOF algorithm compute anomaly scores?
+   - The LOF (Local Outlier Factor) algorithm computes anomaly scores by comparing the local density of a data point to the local densities of its neighbors. Anomalies have lower local density compared to their neighbors.*
+
+7. What are the key parameters of the Isolation Forest algorithm?
+   - *The key parameters include the number of trees in the forest and the subsample size. The number of trees influences the algorithm's sensitivity to anomalies, and the subsample size affects the diversity of the trees.*
+
+8. If a data point has only 2 neighbors of the same class within a radius of 0.5, what is its anomaly score using KNN with K=10?
+   - The anomaly score depends on the context and specific scoring method used. Generally, having only 2 neighbors of the same class might indicate an unusual configuration, resulting in a higher anomaly score.*
+
+9. Using the Isolation Forest algorithm with 100 trees and a dataset of 3000 data points, what is the anomaly score for a data point that has an average path length of 5.0 compared to the average path length of the trees?**
+   - *The anomaly score in Isolation Forest is inversely proportional to the average path length. A shorter path length suggests easier isolation, indicating a potential anomaly. The specific formula would depend on the implementation details of the Isolation Forest algorithm.*
