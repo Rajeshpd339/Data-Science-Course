@@ -1,0 +1,76 @@
+
+
+### Q1: Feature Engineering Pipeline
+
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.feature_selection import SelectFromModel
+
+# Assume 'X_train' and 'y_train' are your training data and labels
+
+# Step 1: Automated Feature Selection
+feature_selection = SelectFromModel(RandomForestClassifier(n_estimators=100))
+    
+# Step 2: Numerical Pipeline
+numerical_pipeline = Pipeline([
+    ('imputer', SimpleImputer(strategy='mean')),
+    ('scaler', StandardScaler())
+])
+
+# Step 3: Categorical Pipeline
+categorical_pipeline = Pipeline([
+    ('imputer', SimpleImputer(strategy='most_frequent')),
+    ('one_hot_encoder', OneHotEncoder())
+])
+
+# Step 4: Combine Numerical and Categorical Pipelines
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', numerical_pipeline, numerical_features),
+        ('cat', categorical_pipeline, categorical_features)
+    ]
+)
+
+# Step 5: Final Pipeline with RandomForestClassifier
+final_pipeline = Pipeline([
+    ('feature_selection', feature_selection),
+    ('preprocessor', preprocessor),
+    ('classifier', RandomForestClassifier(n_estimators=100))
+])
+
+# Step 6: Train and Evaluate the Model
+final_pipeline.fit(X_train, y_train)
+accuracy = final_pipeline.score(X_test, y_test)
+
+print(f"Accuracy on the test set: {accuracy}")
+```
+
+### Q2: Ensemble Pipeline with Voting Classifier
+
+```python
+from sklearn.ensemble import RandomForestClassifier, VotingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Assume 'X_train' and 'y_train' are your training data and labels
+
+# Step 1: Create Individual Classifiers
+rf_classifier = RandomForestClassifier(n_estimators=100)
+lr_classifier = LogisticRegression()
+
+# Step 2: Combine Classifiers using Voting Classifier
+voting_classifier = VotingClassifier(estimators=[('rf', rf_classifier), ('lr', lr_classifier)], voting='hard')
+
+# Step 3: Train and Evaluate the Model
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+voting_classifier.fit(X_train, y_train)
+accuracy = accuracy_score(y_test, voting_classifier.predict(X_test))
+
+print(f"Accuracy on the test set: {accuracy}")
+```
+
