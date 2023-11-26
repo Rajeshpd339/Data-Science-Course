@@ -1,0 +1,48 @@
+Q1. What is Boosting in Machine Learning?
+Boosting is an ensemble learning technique that combines multiple weak learners to create a strong learner. Unlike bagging techniques (e.g., Random Forest), boosting focuses on improving the performance of a model sequentially. It assigns weights to data points and adjusts them at each iteration to give more importance to misclassified samples. Popular boosting algorithms include AdaBoost, Gradient Boosting, and XGBoost.
+
+Q2. Advantages and Limitations of Using Boosting Techniques:
+Advantages:
+
+Improved Accuracy: Boosting often leads to higher accuracy compared to individual weak learners.
+Handles Complex Relationships: Effective in capturing complex relationships in the data.
+Less Prone to Overfitting: Boosting algorithms can reduce overfitting, especially when using shallow weak learners.
+Limitations:
+
+Sensitive to Noisy Data: Boosting can be sensitive to noisy data and outliers.
+Computational Intensity: Training boosting models can be computationally intensive.
+Potential for Overfitting: In some cases, boosting can still overfit, especially with deep trees.
+Q3. How Boosting Works:
+Initialize Weights: Assign equal weights to all data points.
+Build a Weak Learner: Train a weak learner on the data.
+Compute Error: Calculate the error of the weak learner.
+Update Weights: Increase the weights of misclassified samples, making them more important.
+Build a New Weak Learner: Train another weak learner with updated weights.
+Repeat: Iterate through steps 3-5 until a specified number of weak learners are trained.
+Combine Weak Learners: Combine the predictions of all weak learners, giving more weight to those with lower errors.
+Q4. Different Types of Boosting Algorithms:
+AdaBoost (Adaptive Boosting): Emphasizes misclassified samples.
+Gradient Boosting: Fits new models to the residuals of previous models.
+XGBoost (Extreme Gradient Boosting): A scalable and efficient implementation of gradient boosting.
+LightGBM: A gradient boosting framework that uses tree-based learning.
+CatBoost: A boosting algorithm that handles categorical features well.
+Q5. Common Parameters in Boosting Algorithms:
+Number of Estimators: The number of weak learners to train.
+Learning Rate (Shrinkage): Controls the contribution of each weak learner.
+Depth of Trees: For tree-based learners, controls the depth of each tree.
+Subsample: The fraction of samples used for fitting the weak learners.
+Loss Function: Defines the objective to be minimized during training.
+Q6. How Boosting Algorithms Combine Weak Learners:
+Boosting combines weak learners by assigning weights to each learner's prediction. Weights are based on the learner's performance; better learners are given higher weights. The final prediction is a weighted sum of individual learner predictions.
+
+Q7. Concept of AdaBoost Algorithm and Its Working:
+AdaBoost (Adaptive Boosting): Focuses on misclassified samples. In each iteration, it assigns higher weights to misclassified samples, forcing the algorithm to pay more attention to them. Subsequent weak learners correct errors made by previous ones.
+
+Q8. Loss Function Used in AdaBoost Algorithm:
+AdaBoost uses an exponential loss function, which penalizes misclassifications more severely. The loss function is designed to emphasize correcting misclassifications.
+
+Q9. How AdaBoost Algorithm Updates the Weights of Misclassified Samples:
+Misclassified samples receive higher weights, making them more influential in subsequent iterations. This ensures that the algorithm focuses on correcting mistakes.
+
+Q10. Effect of Increasing the Number of Estimators in AdaBoost Algorithm:
+Increasing the number of estimators in AdaBoost typically improves performance up to a certain point. However, beyond a certain number, the model may start overfitting the training data, and the improvement in performance may diminish. Cross-validation can help find an optimal number of estimators.
