@@ -1,0 +1,47 @@
+Q1. What are Eigenvalues and Eignvectors? How are they related to the Eigen-Decomposition approach? Explain with an example.
+- Eigenvalues and Eigenvectors: In linear algebra, given a square matrix A, a non-zero vector v is an eigenvector and a scalar λ is an eigenvalue if \(Av = λv\). The eigen-decomposition of a matrix involves expressing it as a product of eigenvectors and eigenvalues.
+
+  Example:
+  \[A = \begin{bmatrix} 4 & 1 \\ 2 & 3 \end{bmatrix}\]
+  The eigenvectors (v) and eigenvalues (λ) satisfy \[Av = λv\]. Solving, we find two eigenvectors: \(v_1 = \begin{bmatrix} 1 \\ 2 \end{bmatrix}\), \(v_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}\) and their corresponding eigenvalues \(λ_1 = 5, λ_2 = 2\). Eigen-decomposition is then given by \(A = QΛQ^{-1}\), where \(Q = \begin{bmatrix} 1 & 1 \\ 2 & -1 \end{bmatrix}\) and \(Λ = \begin{bmatrix} 5 & 0 \\ 0 & 2 \end{bmatrix}\).
+
+Q2. What is eigen decomposition and what is its significance in linear algebra?
+
+- Eigen Decomposition: Eigen-decomposition is the process of diagonalizing a matrix A into the product of eigenvectors and a diagonal matrix of eigenvalues. It is expressed as \(A = QΛQ^{-1}\), where Q is a matrix containing the eigenvectors, and Λ is a diagonal matrix with eigenvalues. Significance lies in simplifying matrix operations, understanding system dynamics, and solving linear systems efficiently.
+
+Q3. What are the conditions that must be satisfied for a square matrix to be diagonalizable using the Eigen-Decomposition approach? Provide a brief proof to support your answer.**
+
+- Conditions for Diagonalizability: A square matrix A is diagonalizable if it has n linearly independent eigenvectors, where n is the size of the matrix. This ensures the existence of an invertible matrix Q in the decomposition. The proof involves showing that if A has n linearly independent eigenvectors, then \(Q = [v_1, v_2, ..., v_n]\) is invertible.
+
+Q4. What is the significance of the spectral theorem in the context of the Eigen-Decomposition approach? How is it related to the diagonalizability of a matrix? Explain with an example.**
+
+- Significance of Spectral Theorem:** The spectral theorem guarantees that for a Hermitian (or symmetric) matrix, the eigenvalues are real, and the eigenvectors can form an orthonormal basis. This simplifies eigen-decomposition. For example, in a real symmetric matrix, the eigenvectors are orthogonal, and the spectral theorem ensures the real eigenvalues.
+
+Q5. How do you find the eigenvalues of a matrix and what do they represent?
+
+- Finding Eigenvalues:** Eigenvalues (λ) can be found by solving the characteristic equation \(|A - λI| = 0\), where A is the matrix, I is the identity matrix, and |.| denotes the determinant. Solving this equation gives the eigenvalues.
+
+Q6. What are eigenvectors and how are they related to eigenvalues?
+
+- Eigenvectors: Eigenvectors are non-zero vectors v such that \(Av = λv\), where A is the matrix and λ is the eigenvalue. They represent the directions in which the linear transformation (represented by the matrix A) only stretches or compresses the space without changing its direction.
+
+Q7. Can you explain the geometric interpretation of eigenvectors and eigenvalues?
+
+- Geometric Interpretation: Eigenvectors indicate the directions along which a linear transformation only scales the space, and eigenvalues represent the factor by which the space is scaled in those directions. For instance, in a 2D transformation, if an eigenvector points along the x-axis, the corresponding eigenvalue determines the scaling along the x-axis.
+
+Q8. What are some real-world applications of eigen decomposition?**
+
+- Applications: Eigen decomposition is used in various fields, including image compression, signal processing, quantum mechanics, and principal component analysis (PCA) in machine learning.
+
+Q9. Can a matrix have more than one set of eigenvectors and eigenvalues?**
+
+- Multiple Sets: No, a matrix has a unique set of eigenvalues, but it can have multiple sets of linearly independent eigenvectors corresponding to the same eigenvalues.
+
+**Q10. In what ways is the Eigen-Decomposition approach useful in data analysis and machine learning? Discuss at least three specific applications or techniques that rely on Eigen-Decomposition.**
+
+- Applications in ML:
+  1. Principal Component Analysis (PCA): Eigen-decomposition is foundational in PCA, a dimensionality reduction technique used for feature extraction, noise reduction, and data visualization.
+  
+  2. Spectral Clustering: Eigen-decomposition is utilized in spectral clustering algorithms, which use eigenvectors to partition data into clusters based on spectral properties.
+  
+  3. Recommendation Systems:Techniques like Singular Value Decomposition (SVD), a variant of eigen-decomposition, are used in recommendation systems to factorize user-item interaction matrices for collaborative filtering.
