@@ -1,0 +1,32 @@
+1. What is the role of feature selection in anomaly detection?
+   - Feature selection helps identify relevant features and improve the efficiency and accuracy of anomaly detection algorithms. Selecting informative features reduces dimensionality and focuses on aspects critical for anomaly identification.*
+
+2. What are some common evaluation metrics for anomaly detection algorithms and how are they computed?
+   - Common metrics include precision, recall, F1 score, area under the ROC curve (AUC-ROC), and area under the precision-recall curve (AUC-PR). Precision, recall, and F1 score are computed based on true positives, false positives, and false negatives.*
+
+3. What is DBSCAN and how does it work for clustering?
+   - DBSCAN (Density-Based Spatial Clustering of Applications with Noise) is a clustering algorithm that groups together data points based on their density. It defines clusters as dense regions separated by sparser regions, detecting clusters of arbitrary shapes.*
+
+4. How does the epsilon parameter affect the performance of DBSCAN in detecting anomalies?
+   - The epsilon parameter determines the neighborhood radius around each data point. Smaller values may lead to more stringent density requirements, resulting in fewer clusters and potentially identifying anomalies as noise. Larger values can lead to merging clusters.*
+
+5. What are the differences between the core, border, and noise points in DBSCAN, and how do they relate to anomaly detection?
+   - *Core points have a sufficient number of neighbors within the epsilon radius, forming the core of a cluster. Border points have fewer neighbors but are reachable from core points. Noise points have insufficient neighbors and may be considered anomalies.*
+
+6. How does DBSCAN detect anomalies, and what are the key parameters involved in the process?
+   - DBSCAN can detect anomalies as noise points. The key parameters include epsilon (neighborhood radius) and min_samples (minimum number of points within epsilon to form a core point). Points with fewer neighbors than min_samples are considered anomalies.*
+
+7. What is the make_circles package in scikit-learn used for?
+   - The `make_circles` function in scikit-learn generates a synthetic dataset of points arranged in concentric circles. It is often used for testing and visualizing clustering algorithms.*
+
+8. What are local outliers and global outliers, and how do they differ from each other?
+   - Local outliers are anomalies concerning their local neighborhoods, while global outliers are anomalies in the overall dataset. Local outliers may be normal in a larger context, and global outliers are unusual throughout the dataset.*
+
+9. How can local outliers be detected using the Local Outlier Factor (LOF) algorithm?
+   - LOF measures the local density of a data point compared to its neighbors. A point with significantly lower density than its neighbors is considered a local outlier.*
+
+10. How can global outliers be detected using the Isolation Forest algorithm?
+    - Isolation Forest identifies global outliers by isolating them into shorter paths in a random forest. Points with shorter average path lengths are considered global outliers.*
+
+11. What are some real-world applications where local outlier detection is more appropriate than global outlier detection, and vice versa?**
+    - Local outlier detection may be more suitable for identifying anomalies in localized patterns, such as network intrusion detection or fraud detection in specific regions. Global outlier detection is useful for finding anomalies that stand out across the entire dataset, like rare diseases in a medical dataset.*
