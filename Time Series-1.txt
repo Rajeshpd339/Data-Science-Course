@@ -1,0 +1,29 @@
+1. What is a time series, and what are some common applications of time series analysis?
+   - A time series is a sequence of data points collected or recorded over time. Common applications of time series analysis include financial forecasting, stock market analysis, weather prediction, sales forecasting, and health monitoring.*
+
+2. What are some common time series patterns, and how can they be identified and interpreted?
+   - Common patterns include trends, seasonality, and cyclic patterns. These can be identified visually through plots or statistically through decomposition methods.*
+
+3. How can time series data be preprocessed before applying analysis techniques?
+   - Preprocessing involves handling missing values, removing outliers, smoothing noisy data, and ensuring a consistent time interval. It may also include normalization and scaling.*
+
+4. How can time series forecasting be used in business decision-making, and what are some common challenges and limitations?
+   - Time series forecasting helps businesses make informed decisions by predicting future trends. Challenges include dealing with irregular patterns and external factors. Limitations include the uncertainty of future events.*
+
+5. What is ARIMA modelling, and how can it be used to forecast time series data?
+   - ARIMA (AutoRegressive Integrated Moving Average) is a popular time series forecasting model that combines autoregression, differencing, and moving averages. It is used to capture and predict temporal patterns in data.*
+
+6. How do Autocorrelation Function (ACF) and Partial Autocorrelation Function (PACF) plots help in identifying the order of ARIMA models?
+   - ACF and PACF plots help identify the lag orders for autoregressive and moving average components in ARIMA models. Peaks in these plots indicate significant lags.*
+
+7. What are the assumptions of ARIMA models, and how can they be tested for in practice?
+   - ARIMA assumes stationarity, linearity, and independence of residuals. Stationarity can be tested using plots and statistical tests. Residual analysis helps assess linearity and independence.*
+
+8. Suppose you have monthly sales data for a retail store for the past three years. Which type of time series model would you recommend for forecasting future sales, and why?**
+   - I might recommend an ARIMA model as it can capture seasonality and trends in sales data. However, other factors like external events and promotions may also influence the choice of a more complex model.*
+
+9. What are some of the limitations of time series analysis? Provide an example of a scenario where the limitations of time series analysis may be particularly relevant.**
+   - Limitations include the assumption of stationarity, sensitivity to outliers, and the inability to predict sudden changes. For example, in a highly dynamic market, abrupt shifts in consumer behavior might challenge traditional time series models.*
+
+10. Explain the difference between a stationary and non-stationary time series. How does the stationarity of a time series affect the choice of forecasting model?**
+    - A stationary time series has constant mean and variance over time, while a non-stationary series may exhibit trends or seasonality. Stationarity is crucial for ARIMA models, as they assume a stable statistical structure.*
