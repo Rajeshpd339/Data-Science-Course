@@ -1,0 +1,43 @@
+Q1. Decision Tree Classifier Algorithm:
+   - Overview: Decision tree is a supervised learning algorithm used for both classification and regression tasks. The classifier works by recursively partitioning the dataset based on features, creating a tree-like structure where each node represents a decision based on a feature.
+   - How it Works:
+      1. Root Node: The feature that best splits the dataset is selected as the root node.
+      2. Splitting: The dataset is split into subsets based on the chosen feature.
+      3. Recursive Process: The splitting process is repeated for each subset, creating branches in the tree.
+      4. Leaf Nodes: The process continues until a stopping criterion is met, such as a predefined depth or impurity measure.
+      5. Prediction: To make a prediction, a new data point traverses the tree from the root to a leaf node, and the majority class in that leaf is the predicted class.
+
+Q2. Mathematical Intuition of Decision Tree:
+   - Splitting Criteria: Decision trees use measures like Gini impurity or entropy to determine the best feature for splitting. The goal is to minimize impurity in resulting subsets.
+   - Gini Impurity (for binary classification): \( Gini(D) = 1 - \sum_{i=1}^{c} p_i^2 \), where \( p_i \) is the proportion of class \( i \) in the dataset \( D \).
+
+Q3. Binary Classification with Decision Tree:
+   - A decision tree can be used for binary classification by designating one class as the positive class and the other as the negative class.
+   - The tree is built to optimize the separation of these two classes based on the selected features.
+
+Q4. Geometric Intuition:
+   - Decision trees create axis-aligned decision boundaries. Each split in the tree corresponds to a division along one of the feature axes.
+   - The decision boundaries can be visualized as perpendicular lines or hyperplanes in the feature space.
+
+Q5. Confusion Matrix:
+   - A confusion matrix is a table used to evaluate the performance of a classification model.
+   - It compares the predicted labels to the actual labels, categorizing them into true positives, true negatives, false positives, and false negatives.
+
+Q6. Confusion Matrix Example:
+   - |                 | Predicted Positive | Predicted Negative |
+     | --------------- | ------------------ | ------------------ |
+     | Actual Positive | True Positive      | False Negative     |
+     | Actual Negative | False Positive     | True Negative      |
+   - Precision: \( \frac{\text{True Positive}}{\text{True Positive + False Positive}} \)
+   - Recall: \( \frac{\text{True Positive}}{\text{True Positive + False Negative}} \)
+   - F1 Score: \( 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}} \)
+
+Q7. Choosing Evaluation Metric:
+   - The choice of metric depends on the specific goals of the classification problem.
+   - Accuracy is a common metric, but it may not be suitable for imbalanced datasets. Precision, recall, and F1 score offer a more nuanced view of performance.
+
+Q8. Precision-Critical Example:
+   - In spam email detection, precision is crucial because classifying a legitimate email as spam (false positive) is more disruptive than missing some spam emails (false negative).
+
+Q9. Recall-Critical Example:
+   - In a medical diagnosis scenario, recall is vital because failing to identify a positive case (disease) can have severe consequences, even if it means more false positives.
