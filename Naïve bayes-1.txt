@@ -1,0 +1,42 @@
+### Q1. What is Bayes' Theorem?
+
+Bayes' Theorem is a mathematical formula that describes the probability of an event based on prior knowledge of conditions that might be related to the event. It is named after the Reverend Thomas Bayes, who introduced the theorem. Bayes' Theorem is a fundamental concept in probability theory and statistics and is widely used in various fields, including machine learning.
+
+### Q2. Formula for Bayes' Theorem:
+
+The formula for Bayes' Theorem is expressed as:
+
+\[ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} \]
+
+where:
+- \( P(A|B) \) is the probability of event A occurring given that event B has occurred.
+- \( P(B|A) \) is the probability of event B occurring given that event A has occurred.
+- \( P(A) \) is the prior probability of event A.
+- \( P(B) \) is the prior probability of event B.
+
+### Q3. How is Bayes' Theorem Used in Practice?
+
+Bayes' Theorem is used to update probabilities based on new evidence or observations. In practice, it is often employed in scenarios involving conditional probabilities, such as:
+- Spam filtering in emails.
+- Medical diagnosis based on test results.
+- Predictive modeling and machine learning, including Naive Bayes classifiers.
+
+### Q4. Relationship Between Bayes' Theorem and Conditional Probability:
+
+Bayes' Theorem relates conditional probability (\( P(A|B) \)) to the reverse conditional probability (\( P(B|A) \)). It provides a way to update or revise our beliefs about the probability of an event A given new evidence B. The relationship is fundamental in understanding the impact of new information on our initial beliefs.
+
+### Q5. Choosing a Naive Bayes Classifier:
+
+The choice of the type of Naive Bayes classifier (Gaussian, Multinomial, or Bernoulli) depends on the nature of the data:
+- **Gaussian Naive Bayes:** Suitable for continuous data that follows a Gaussian (normal) distribution.
+- **Multinomial Naive Bayes:** Suitable for discrete data, often used in text classification with word counts.
+- **Bernoulli Naive Bayes:** Suitable for binary data, where features represent binary occurrences.
+
+### Q6. Naive Bayes Classification Assignment:
+
+To predict the class of a new instance with features \(X_1 = 3\) and \(X_2 = 4\), we can use the Naive Bayes classifier based on the provided frequency table.
+
+\[ P(A|X_1=3, X_2=4) \propto P(X_1=3|A) \cdot P(X_2=4|A) \cdot P(A) \]
+
+\[ P(B|X_1=3, X_2=4) \propto P(X_1=3|B) \cdot P(X_2=4|B) \cdot P(B) \]
+
