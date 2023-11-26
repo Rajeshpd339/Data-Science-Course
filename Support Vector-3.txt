@@ -1,0 +1,18 @@
+### Q1. Best Regression Metric for House Price Prediction with SVM Regression:
+
+In the context of predicting house prices with SVM regression, the best regression metric to employ would be **Mean Absolute Error (MAE)**. MAE is suitable for scenarios where you want to measure the average absolute difference between the predicted and actual values. In the context of house prices, MAE provides a clear understanding of the average magnitude of errors in predicting the prices.
+
+### Q2. MSE or R-squared for Predicting Actual House Prices:
+
+If the goal is to predict the actual price of a house as accurately as possible, **Mean Squared Error (MSE)** would be more appropriate. MSE penalizes larger errors more heavily, making it suitable for regression problems where the emphasis is on reducing the impact of larger deviations from the true values. R-squared, on the other hand, measures the proportion of variance in the dependent variable that is predictable from the independent variables, and it may not directly reflect prediction accuracy in the context of predicting actual prices.
+
+### Q3. Appropriate Regression Metric for a Dataset with Outliers:
+
+When dealing with a dataset that has a significant number of outliers, **Mean Squared Error (MSE)** may not be the most appropriate metric. Outliers can disproportionately influence MSE, leading to an overemphasis on their impact. Instead, **Mean Absolute Error (MAE)** would be more robust in the presence of outliers, as it measures the average absolute difference, giving equal weight to all errors regardless of magnitude.
+
+### Q4. Choosing Between MSE and RMSE for SVM Regression with Polynomial Kernel:
+
+In this case, if both Mean Squared Error (MSE) and Root Mean Squared Error (RMSE) are very close, it is generally preferable to choose **RMSE**. RMSE has the advantage of providing a metric in the same unit as the target variable (house prices), which makes it easier to interpret. RMSE also penalizes larger errors more heavily, similar to MSE, but presents the error in a more interpretable scale.
+
+### Q5. Evaluation Metric for Comparing SVM Regression Models with Different Kernels:
+
