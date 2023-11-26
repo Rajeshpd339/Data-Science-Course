@@ -1,0 +1,134 @@
+### Q1. Mathematical Formula for a Linear SVM:
+
+The decision function for a linear SVM is given by:
+
+\[ f(\mathbf{x}) = \mathbf{w} \cdot \mathbf{x} + b \]
+
+Here, \(\mathbf{w}\) is the weight vector, \(\mathbf{x}\) is the input vector, and \(b\) is the bias term.
+
+### Q2. Objective Function of a Linear SVM:
+
+The objective function for a linear SVM is to find the hyperplane that maximizes the margin between the classes. The optimization problem is formulated as:
+
+\[ \text{Minimize } \frac{1}{2} \|\mathbf{w}\|^2 \]
+
+subject to the constraints:
+
+\[ y_i(\mathbf{w} \cdot \mathbf{x}_i + b) \geq 1 \text{ for all } i \]
+
+### Q3. Kernel Trick in SVM:
+
+The kernel trick in SVM allows the algorithm to implicitly map the input data into a higher-dimensional space without explicitly calculating the transformed feature vectors. This is done by introducing a kernel function \( K(\mathbf{x}_i, \mathbf{x}_j) \) that computes the dot product of the transformed vectors.
+
+### Q4. Role of Support Vectors in SVM:
+
+Support vectors are the data points that lie closest to the decision boundary (margin). They are crucial in defining the hyperplane because changing their positions would affect the position of the decision boundary. Support vectors are the only data points that contribute to the determination of the optimal hyperplane and are essential for the SVM algorithm.
+
+Example: In a 2D space, if we have two classes separated by a line, the support vectors are the points on the edge of each class.
+
+### Q5. Illustration of Hyperplane, Marginal Plane, Soft Margin, and Hard Margin in SVM:
+
+![SVM Illustration](https://i.imgur.com/QjJbSnM.png)
+
+- **Hyperplane:** The separating line (or plane) between the classes.
+- **Marginal Plane:** Planes parallel to the hyperplane, which define the margin.
+- **Soft Margin:** Allows for some misclassification to achieve a wider margin.
+- **Hard Margin:** Does not allow any misclassification, leading to a narrower margin.
+
+### Q6. SVM Implementation through Iris Dataset:
+
+```python
+# Import necessary libraries
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+
+# Load the Iris dataset
+iris = datasets.load_iris()
+X = iris.data[:, :2]  # Using only the first two features for visualization
+y = iris.target
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train a linear SVM classifier
+clf = SVC(kernel='linear')
+clf.fit(X_train, y_train)
+
+# Predict the labels for the testing set
+y_pred = clf.predict(X_test)
+
+# Compute the accuracy of the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy:.2f}')
+
+# Plot decision boundaries
+def plot_decision_boundary(X, y, model, title):
+    h = .02
+    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+    Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
+    plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
+    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.coolwarm, edgecolors='k')
+    plt.title(title)
+    plt.xlabel('Feature 1')
+    plt.ylabel('Feature 2')
+    plt.show()
+
+# Plot decision boundaries of the trained model
+plot_decision_boundary(X_train, y_train, clf, 'SVM Decision Boundaries (Training Set)')
+
+# Try different values of the regularization parameter C
+for C in [0.1, 1, 10]:
+    clf = SVC(kernel='linear', C=C)
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    plot_decision_boundary(X_train, y_train, clf, f'SVM Decision Boundaries (C={C}, Accuracy={accuracy:.2f})')
+```
+
+### Bonus Task: Implement a Linear SVM Classifier from Scratch:
+
+Here's a simplified version of a linear SVM implementation:
+
+```python
+class LinearSVM:
+    def __init__(self, learning_rate=0.01, epochs=1000, C=1.0):
+        self.learning_rate = learning_rate
+        self.epochs = epochs
+        self.C = C
+        self.weights = None
+        self.bias = None
+
+    def fit(self, X, y):
+        m, n = X.shape
+        self.weights = np.zeros(n)
+        self.bias = 0
+
+        for epoch in range(self.epochs):
+            for i in range(m):
+                if y[i] * (np.dot(X[i], self.weights) + self.bias) >= 1:
+                    self.weights -= self.learning_rate * (2 * self.C * self.weights)
+                else:
+                    self.weights -= self.learning_rate * (2 * self.C * self.weights - np.dot(X[i], y[i]))
+                    self.bias -= self.learning_rate * y[i]
+
+    def predict(self, X):
+        return np.sign(np.dot(X, self.weights) + self.bias)
+
+# Compare with scikit-learn implementation
+svm_custom = LinearSVM(C=1.0)
+svm_custom.fit(X_train, y_train)
+
+# Predict labels for testing set
+y_pred_custom = svm_custom.predict(X_test)
+
+# Compute accuracy
+accuracy_custom = accuracy_score(y_test, y_pred_custom)
+print(f'Custom SVM Accuracy: {accuracy_custom:.2f}')
+```
