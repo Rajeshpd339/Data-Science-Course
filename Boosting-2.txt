@@ -1,0 +1,102 @@
+Q1. What is Gradient Boosting Regression?
+Gradient Boosting Regression is a machine learning technique that builds an additive model in a forward stage-wise manner. It trains a series of weak learners (often decision trees) sequentially, with each new learner attempting to correct the errors made by the combination of the existing learners. The key idea is to fit new models to the residuals of the combined ensemble. This process is guided by the gradient of the loss function with respect to the model's predictions.
+
+Q2. Implementing a Simple Gradient Boosting Algorithm from Scratch:
+python
+Copy code
+import numpy as np
+
+class GradientBoostingRegressor:
+    def __init__(self, n_estimators=100, learning_rate=0.1, max_depth=3):
+        self.n_estimators = n_estimators
+        self.learning_rate = learning_rate
+        self.max_depth = max_depth
+        self.trees = []
+
+    def fit(self, X, y):
+        # Initialize predictions with the mean of the target variable
+        predictions = np.full_like(y, fill_value=np.mean(y))
+
+        for _ in range(self.n_estimators):
+            # Compute residuals
+            residuals = y - predictions
+            
+            # Fit a weak learner (decision tree) to the residuals
+            tree = DecisionTreeRegressor(max_depth=self.max_depth)
+            tree.fit(X, residuals)
+            
+            # Update predictions using the learning rate
+            predictions += self.learning_rate * tree.predict(X)
+
+            # Store the trained tree in the ensemble
+            self.trees.append(tree)
+
+    def predict(self, X):
+        # Make predictions using the ensemble of weak learners
+        predictions = np.zeros(X.shape[0])
+        for tree in self.trees:
+            predictions += self.learning_rate * tree.predict(X)
+
+        return predictions
+
+# Usage example:
+# gb_regressor = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3)
+# gb_regressor.fit(X_train, y_train)
+# y_pred = gb_regressor.predict(X_test)
+# Evaluate performance using metrics like mean squared error and R-squared
+Q3. Experimenting with Different Hyperparameters:
+Experimenting with hyperparameters involves changing values and observing the impact on model performance. Here's an example using scikit-learn's GridSearchCV:
+
+python
+Copy code
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import mean_squared_error
+from sklearn.tree import DecisionTreeRegressor
+
+# Assuming X_train, y_train, X_test, y_test are available
+
+# Define the parameter grid
+param_grid = {
+    'n_estimators': [50, 100, 150],
+    'learning_rate': [0.01, 0.1, 0.2],
+    'max_depth': [3, 4, 5]
+}
+
+# Create the GradientBoostingRegressor
+gb_regressor = GradientBoostingRegressor()
+
+# Perform grid search
+grid_search = GridSearchCV(gb_regressor, param_grid, cv=3, scoring='neg_mean_squared_error')
+grid_search.fit(X_train, y_train)
+
+# Get the best hyperparameters
+best_params = grid_search.best_params_
+
+# Train the model with the best hyperparameters
+best_gb_regressor = GradientBoostingRegressor(**best_params)
+best_gb_regressor.fit(X_train, y_train)
+y_pred = best_gb_regressor.predict(X_test)
+
+# Evaluate the performance
+mse = mean_squared_error(y_test, y_pred)
+r_squared = best_gb_regressor.score(X_test, y_test)
+Q4. What is a Weak Learner in Gradient Boosting?
+A weak learner in Gradient Boosting is a simple model that performs slightly better than random chance on a given task. Typically, decision trees with limited depth are used as weak learners.
+
+Q5. Intuition Behind the Gradient Boosting Algorithm:
+The intuition behind Gradient Boosting is to sequentially fit models to the residuals of the combined ensemble. Each new model corrects the errors made by the existing ensemble, gradually reducing the overall prediction error.
+
+Q6. How Gradient Boosting Builds an Ensemble of Weak Learners:
+Initialize Predictions: Start with an initial prediction, often the mean of the target variable.
+Compute Residuals: Calculate the residuals (differences between actual and predicted values).
+Fit Weak Learner to Residuals: Train a weak learner (e.g., decision tree) on the residuals.
+Update Predictions: Update predictions by adding the weak learner's predictions scaled by a learning rate.
+Repeat: Repeat steps 2-4 until a predefined number of weak learners are trained.
+Final Prediction: The final prediction is the sum of all weak learners' predictions.
+Q7. Steps in Constructing the Mathematical Intuition of Gradient Boosting Algorithm:
+Define Loss Function: Choose a differentiable loss function to measure the error between predictions and true values.
+Initialize Model: Start with an initial model that predicts the mean of the target variable.
+Compute Negative Gradient of the Loss: Calculate the negative gradient of the loss function with respect to the current model's predictions.
+Fit Weak Learner to Negative Gradient: Train a weak learner to predict the negative gradient.
+Update Model: Update the model by adding a scaled version of the weak learner's predictions.
+Repeat: Repeat steps 3-5 until a predefined number of iterations or until convergence.
