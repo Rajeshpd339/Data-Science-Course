@@ -1,0 +1,54 @@
+### Q1. What is Random Forest Regressor?
+
+**Random Forest Regressor** is an ensemble learning algorithm that belongs to the family of decision tree-based models. It is used for regression tasks, where the goal is to predict a continuous numeric output. Random Forest Regressor builds multiple decision trees during training and outputs the average prediction of the individual trees as the final prediction.
+
+### Q2. How Does Random Forest Regressor Reduce the Risk of Overfitting?
+
+Random Forest Regressor reduces the risk of overfitting through the following mechanisms:
+
+- **Bootstrap Sampling:** Each decision tree in the forest is trained on a random subset of the training data, drawn with replacement (bootstrap sampling). This introduces diversity among the trees and helps prevent overfitting to specific patterns in the training data.
+
+- **Feature Randomization:** At each split in the decision tree, only a random subset of features is considered. This further adds diversity to the trees and reduces the likelihood of individual trees overfitting to specific features.
+
+- **Averaging Predictions:** The final prediction of the Random Forest Regressor is the average of predictions from individual trees. Averaging smoothens out the impact of noisy data points, contributing to a more robust and generalizable model.
+
+### Q3. How Does Random Forest Regressor Aggregate the Predictions of Multiple Decision Trees?
+
+Random Forest Regressor aggregates predictions through the averaging of individual decision tree predictions. For each input sample, each decision tree in the forest independently provides a numeric prediction. The final prediction of the Random Forest Regressor is the average (or sometimes the median) of these individual predictions.
+
+### Q4. What Are the Hyperparameters of Random Forest Regressor?
+
+Some key hyperparameters of the Random Forest Regressor include:
+
+- **n_estimators:** The number of decision trees in the forest.
+- **max_depth:** The maximum depth of each decision tree.
+- **min_samples_split:** The minimum number of samples required to split an internal node.
+- **min_samples_leaf:** The minimum number of samples required to be in a leaf node.
+- **max_features:** The number of features to consider when looking for the best split.
+
+These hyperparameters control the complexity of the individual trees and the overall behavior of the Random Forest.
+
+### Q5. Difference Between Random Forest Regressor and Decision Tree Regressor?
+
+- **Random Forest Regressor:** Builds multiple decision trees and aggregates their predictions. Utilizes bootstrap sampling and feature randomization to reduce overfitting.
+
+- **Decision Tree Regressor:** A single decision tree used for regression tasks. Can be prone to overfitting, especially with deep trees.
+
+### Q6. Advantages and Disadvantages of Random Forest Regressor:
+
+**Advantages:**
+- High predictive accuracy.
+- Robust to overfitting, thanks to ensemble techniques.
+- Handles a large number of features and captures complex relationships.
+
+**Disadvantages:**
+- Can be computationally expensive due to multiple trees.
+- Harder to interpret compared to a single decision tree.
+
+### Q7. What is the Output of Random Forest Regressor?
+
+The output of a Random Forest Regressor is a continuous numeric prediction for each input sample. For a given input, each decision tree in the forest produces a prediction, and the final output is the average (or median) of these individual predictions.
+
+### Q8. Can Random Forest Regressor Be Used for Classification Tasks?
+
+While Random Forest Regressor is designed for regression tasks, a closely related algorithm called **Random Forest Classifier** is used for classification tasks. The main difference lies in the type of output variable they predict (continuous for regression, categorical for classification). The principles of ensemble learning and tree-based modeling are similar in both cases.
