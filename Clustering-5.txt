@@ -1,0 +1,20 @@
+Q1. Contingency Matrix and Evaluation:
+- A contingency matrix (also known as a confusion matrix) is a table used to evaluate the performance of a classification model. It compares the predicted and actual classes, showing true positives, true negatives, false positives, and false negatives.
+
+Q2. Pair Confusion Matrix:
+- A pair confusion matrix is used in multilabel classification to evaluate how well a model predicts pairs of classes. It extends the idea of a confusion matrix to handle multiple labels and their combinations.
+
+Q3. Extrinsic Measure in NLP:
+- An extrinsic measure in NLP assesses the performance of language models based on their impact on downstream tasks, such as document classification or sentiment analysis.
+
+Q4. Intrinsic Measure in ML:
+- An intrinsic measure in machine learning evaluates a model's performance based on its inherent characteristics, often without relying on external tasks. For example, clustering purity is an intrinsic measure.
+
+Q5. Confusion Matrix Purpose:
+- The confusion matrix helps identify a model's strengths and weaknesses by providing a detailed breakdown of its predictions. It aids in understanding how well the model performs for different classes and where errors occur.
+
+Q6. Intrinsic Measures for Unsupervised Learning:
+- Measures like silhouette score, Davies-Bouldin index, or cohesion and separation metrics are common for evaluating clustering algorithms. These metrics assess the quality and compactness of clusters.
+
+Q7. Limitations of Accuracy:
+- Accuracy may not be suitable for imbalanced datasets, where one class dominates. It can be misleading, especially if false positives or false negatives have different consequences. Precision, recall, F1 score, or area under the ROC curve (AUC-ROC) can provide a more comprehensive evaluation.
