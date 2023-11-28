@@ -1,0 +1,32 @@
+Q1. What is an activation function in the context of artificial neural networks?
+
+An activation function is a mathematical operation applied to the output of a neuron in an artificial neural network. It introduces non-linearity to the network, allowing it to learn complex patterns and relationships in the data. Activation functions determine whether a neuron should be activated or not based on the input it receives.
+Q2. What are some common types of activation functions used in neural networks?
+
+Common activation functions include:
+Sigmoid: Maps input values to a range between 0 and 1.
+Hyperbolic Tangent (tanh): Similar to the sigmoid but maps input values to a range between -1 and 1.
+Rectified Linear Unit (ReLU): Sets all negative values to zero and passes positive values unchanged.
+Leaky ReLU: Similar to ReLU but allows a small, positive gradient for negative input values.
+Softmax: Used in the output layer for multi-class classification, converting raw scores into probabilities.
+Q3. How do activation functions affect the training process and performance of a neural network?
+
+Activation functions introduce non-linearity, enabling neural networks to model complex relationships. The choice of activation function can impact convergence speed, model accuracy, and the ability to capture certain patterns in the data.
+Q4. How does the sigmoid activation function work? What are its advantages and disadvantages?
+
+The sigmoid function squashes input values to the range [0, 1]. Advantages include smooth gradients, making it suitable for gradient-based optimization. However, it suffers from the vanishing gradient problem and is not zero-centered, which can slow down learning.
+Q5. What is the rectified linear unit (ReLU) activation function? How does it differ from the sigmoid function?
+
+ReLU sets negative input values to zero and passes positive values unchanged. It differs from the sigmoid by not saturating for positive inputs, which helps mitigate the vanishing gradient problem.
+Q6. What are the benefits of using the ReLU activation function over the sigmoid function?
+
+ReLU is computationally efficient and mitigates the vanishing gradient problem better than the sigmoid. Its simplicity and ability to promote sparse activation contribute to its popularity.
+Q7. Explain the concept of "leaky ReLU" and how it addresses the vanishing gradient problem.
+
+Leaky ReLU allows a small, non-zero gradient for negative inputs, preventing neurons from becoming inactive. This addresses the vanishing gradient problem associated with traditional ReLU, enhancing the ability to learn from data.
+Q8. What is the purpose of the softmax activation function? When is it commonly used?
+
+Softmax is used in the output layer for multi-class classification. It converts raw scores into probabilities, allowing the model to make predictions for multiple classes. It ensures that the sum of the predicted probabilities is 1.
+Q9. What is the hyperbolic tangent (tanh) activation function? How does it compare to the sigmoid function?
+
+The tanh function is similar to the sigmoid but maps input values to a range between -1 and 1. It is zero-centered, which can aid in optimization compared to the sigmoid. However, it still suffers from the vanishing gradient problem.
